@@ -290,6 +290,8 @@
     section.active .stagger:nth-child(8) { animation-delay: 0.48s; }
     section.active .stagger:nth-child(9) { animation-delay: 0.54s; }
     section.active .stagger:nth-child(10) { animation-delay: 0.60s; }
+    section.active .stagger:nth-child(11) { animation-delay: 0.66s; }
+    section.active .stagger:nth-child(12) { animation-delay: 0.72s; }
 
     @keyframes staggerIn {
       from { opacity: 0; transform: translateY(16px); }
@@ -586,6 +588,7 @@
       padding: 24px 20px;
       text-align: center;
       margin-top: 24px;
+      margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
     }
     .game-title {
@@ -1575,6 +1578,88 @@
 
       <div id="game-feedback" class="game-feedback"></div>
     </div>
+
+    <div class="card stagger" style="border-left-color: var(--rojo); background:#fef2f2;">
+      <h4>⚠️ Los derrames ocurren en segundos</h4>
+      <p>
+        Durante actividades rutinarias como trasiego de ACPM, cambio de filtros,
+        mantenimiento o manipulación de recipientes, una conexión deficiente,
+        una manguera defectuosa o una válvula abierta incorrectamente puede generar
+        un derrame ambiental.
+      </p>
+      <p>
+        Un pequeño volumen derramado puede contaminar el suelo, cuerpos de agua,
+        drenajes y generar impactos ambientales, operacionales y reputacionales.
+      </p>
+      <strong>Todo derrame debe ser reportado inmediatamente, incluso si parece menor.</strong>
+    </div>
+
+    <div class="card stagger" style="border-left-color:#ea580c;">
+      <h4>🛢️ Antes de iniciar un trasiego de ACPM o aceites</h4>
+      <ul>
+        <li>Inspecciona mangueras, conexiones y acoples.</li>
+        <li>Verifica que existan bandejas o elementos de contención.</li>
+        <li>Ubica el kit antiderrames antes de iniciar la actividad.</li>
+        <li>Confirma el volumen a transferir.</li>
+        <li>No abandones la operación mientras exista flujo de combustible.</li>
+        <li>Mantén comunicación permanente con el personal involucrado.</li>
+        <li>Detén inmediatamente la operación ante cualquier fuga.</li>
+      </ul>
+    </div>
+
+    <div class="card stagger" style="border-left-color: var(--verde);">
+      <h4>🧰 Kit Antiderrames</h4>
+      <p>
+        Los kits antiderrames son la primera barrera de respuesta ante incidentes con
+        ACPM, aceites lubricantes, grasas y otros hidrocarburos.
+      </p>
+      <ul>
+        <li>Material absorbente.</li>
+        <li>Salchichas o barreras de contención.</li>
+        <li>Almohadillas absorbentes.</li>
+        <li>Guantes de protección.</li>
+        <li>Bolsas para disposición de residuos contaminados.</li>
+        <li>Elementos para recolección del material impactado.</li>
+      </ul>
+      <p>
+        Todos los trabajadores deben conocer su ubicación antes de iniciar labores.
+      </p>
+    </div>
+
+    <div class="card stagger" style="border-left-color: var(--rojo); background:#fff7ed;">
+      <h4>🚨 Respuesta Inicial Ante un Derrame</h4>
+      <ol>
+        <li><strong>Detén la fuente del derrame</strong> si es seguro hacerlo.</li>
+        <li><strong>Notifica inmediatamente</strong> al supervisor o responsable HSEQ.</li>
+        <li><strong>Protege los drenajes y canales</strong> cercanos.</li>
+        <li><strong>Contén el producto</strong> utilizando barreras absorbentes.</li>
+        <li><strong>Recupera el material contaminado</strong> siguiendo instrucciones HSEQ.</li>
+        <li><strong>No laves el derrame con agua.</strong></li>
+        <li><strong>No abandones el sitio</strong> hasta recibir instrucciones.</li>
+      </ol>
+    </div>
+
+    <div class="card stagger" style="border-left-color:#dc2626;">
+      <h4>❌ Acciones Prohibidas</h4>
+      <ul>
+        <li>Lavar combustibles hacia drenajes.</li>
+        <li>Ocultar o minimizar un derrame.</li>
+        <li>Continuar el trasiego si existe fuga.</li>
+        <li>Disponer absorbentes contaminados en residuos ordinarios.</li>
+        <li>Abandonar la zona sin informar.</li>
+        <li>Intentar controlar un derrame sin los elementos adecuados.</li>
+      </ul>
+    </div>
+
+    <div class="emergency-banner stagger" style="background: linear-gradient(135deg,#15803d,#166534);">
+      <span class="e-ico">🌱</span>
+      <div class="e-text">
+        <strong>Protegemos la operación y el ambiente.</strong><br>
+        Un litro de combustible derramado puede generar impactos ambientales
+        significativos. La prevención, la detección temprana y la respuesta oportuna
+        son responsabilidad de todos.
+      </div>
+    </div>
   </section>
 
   <section data-title="Plan de Emergencias" aria-label="Sección 10: Plan de Emergencias">
@@ -1619,7 +1704,7 @@
         <li>Ubica el punto <em>"Usted está aquí"</em> en los mapas físicos de tu área de trabajo.</li>
         <li>Identifica las rutas seguras alejadas de los tanques de GLP y subestación.</li>
         <li>No te devuelvas por objetos personales una vez iniciada la evacuación.</li>
-        <li>Mantén el orden y sigue las instrucciones de los brigadistas locales.</li>
+        <li>Mantén el order y sigue las instrucciones de los brigadistas locales.</li>
       </ul>
     </div>
   </section>

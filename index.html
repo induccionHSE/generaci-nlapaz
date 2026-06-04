@@ -1537,14 +1537,14 @@
 
   <section data-title="Gestión Ambiental" aria-label="Sección 9: Gestión Ambiental">
     <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
-    <h2><span class="section-number">9</span>Gestión Ambiental y Control de Derrames</h2>
-    <p class="stagger">En PBI velamos por el entorno. Si manipulas aceites o Diésel, debes conocer la ubicación de los kits antiderrame. La correcta clasificación de residuos sigue este código de colores:</p>
+    <h2><span class="section-number">9</span>Gestión Ambiental y Derrames</h2>
+    <p class="stagger">En PBI velamos por el entorno. La correcta clasificación de residuos sigue este código de colores:</p>
 
     <div class="residuo-grid">
       <div class="residuo-card r-blanco stagger">
         <div class="r-ico">♻️</div>
         <h4>BLANCO · Aprovechables</h4>
-        <p>Papel, cartón, plástico limpio, vidrio.</p>
+        <p>Papel, cartón, plástico, vidrio.</p>
       </div>
       <div class="residuo-card r-verde stagger">
         <div class="r-ico">🌿</div>
@@ -1554,110 +1554,119 @@
       <div class="residuo-card r-negro stagger">
         <div class="r-ico">🗑️</div>
         <h4>NEGRO · No Aprovechables</h4>
-        <p>Papel higiénico, servilletas usadas.</p>
+        <p>Papel higiénico, servilletas.</p>
       </div>
       <div class="residuo-card r-rojo stagger">
         <div class="r-ico">☣️</div>
         <h4>ROJO · Peligrosos</h4>
-        <p>Trapos con aceite, filtros, envases químicos.</p>
+        <p>Trapos con aceite, filtros.</p>
       </div>
     </div>
 
-    <div class="game-container stagger">
+    <div class="game-container stagger" style="margin-bottom: 40px;">
       <div class="game-title">🎮 Mini-Juego: ¿Dónde va este residuo?</div>
       <p style="font-size: 0.9rem; margin-bottom: 15px;">Toca la caneca correcta para avanzar.</p>
-      
       <div id="game-item-text" class="game-item">Cargando...</div>
-      
       <div class="game-bins" id="game-bins">
         <div class="game-bin blanco" data-bin="blanco">Blanco</div>
         <div class="game-bin verde" data-bin="verde">Verde</div>
         <div class="game-bin negro" data-bin="negro">Negro</div>
         <div class="game-bin rojo" data-bin="rojo">Rojo</div>
       </div>
-
       <div id="game-feedback" class="game-feedback"></div>
     </div>
 
-    <div class="card stagger" style="border-left-color: var(--rojo); background:#fef2f2;">
-      <h4>⚠️ Los derrames ocurren en segundos</h4>
-      <p>
-        Durante actividades rutinarias como trasiego de ACPM, cambio de filtros,
-        mantenimiento o manipulación de recipientes, una conexión deficiente,
-        una manguera defectuosa o una válvula abierta incorrectamente puede generar
-        un derrame ambiental.
-      </p>
-      <p>
-        Un pequeño volumen derramado puede contaminar el suelo, cuerpos de agua,
-        drenajes y generar impactos ambientales, operacionales y reputacionales.
-      </p>
-      <strong>Todo derrame debe ser reportado inmediatamente, incluso si parece menor.</strong>
+    <h3 class="stagger" style="font-family: var(--font-display); color: var(--azul-oscuro); margin-bottom: 16px; border-bottom: 2px solid var(--gris-claro); padding-bottom: 8px;">
+      Prevención y Control de Derrames
+    </h3>
+
+    <div class="alerta-extintor stagger" style="background:#fef2f2; color:#b91c1c; border-color:#fecaca; border-left-color:var(--rojo);">
+      <span style="font-size: 1.6rem;">⚠️</span>
+      <div>
+        <strong style="display: block; font-family: var(--font-display); font-size: 1rem;">Los derrames ocurren en segundos</strong>
+        <span style="font-size: 0.85rem;">Una manguera defectuosa o válvula mal cerrada en un trasiego de ACPM puede contaminar suelo y agua. <strong>Todo derrame, por menor que parezca, debe reportarse de inmediato.</strong></span>
+      </div>
     </div>
 
-    <div class="card stagger" style="border-left-color:#ea580c;">
-      <h4>🛢️ Antes de iniciar un trasiego de ACPM o aceites</h4>
-      <ul>
-        <li>Inspecciona mangueras, conexiones y acoples.</li>
-        <li>Verifica que existan bandejas o elementos de contención.</li>
-        <li>Ubica el kit antiderrames antes de iniciar la actividad.</li>
-        <li>Confirma el volumen a transferir.</li>
-        <li>No abandones la operación mientras exista flujo de combustible.</li>
-        <li>Mantén comunicación permanente con el personal involucrado.</li>
-        <li>Detén inmediatamente la operación ante cualquier fuga.</li>
-      </ul>
+    <div class="grid-2">
+      <div class="card stagger" style="border-left-color:#ea580c; padding: 16px;">
+        <h4 style="color: #ea580c;">🛢️ Antes del Trasiego</h4>
+        <ul style="margin:0; font-size:0.85rem; color: var(--texto-secondary);">
+          <li>Inspecciona mangueras, conexiones y acoples.</li>
+          <li>Verifica que existan bandejas de contención.</li>
+          <li>Confirma el volumen a transferir.</li>
+          <li><strong>No abandones</strong> la operación si hay flujo.</li>
+          <li>Detén la tarea ante cualquier fuga.</li>
+        </ul>
+      </div>
+
+      <div class="card stagger" style="border-left-color: var(--verde); padding: 16px;">
+        <h4 style="color: var(--verde);">🧰 Tu Kit Antiderrames</h4>
+        <p style="font-size:0.8rem; margin-bottom: 8px;">Es tu primera barrera. Conoce su ubicación. Contiene:</p>
+        <ul style="margin:0; font-size:0.85rem; color: var(--texto-secondary);">
+          <li>Material absorbente particulado.</li>
+          <li>Salchichas / Barreras de contención.</li>
+          <li>Almohadillas u hojas absorbentes.</li>
+          <li>Bolsas rojas para disposición.</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="card stagger" style="border-left-color: var(--verde);">
-      <h4>🧰 Kit Antiderrames</h4>
-      <p>
-        Los kits antiderrames son la primera barrera de respuesta ante incidentes con
-        ACPM, aceites lubricantes, grasas y otros hidrocarburos.
-      </p>
-      <ul>
-        <li>Material absorbente.</li>
-        <li>Salchichas o barreras de contención.</li>
-        <li>Almohadillas absorbentes.</li>
-        <li>Guantes de protección.</li>
-        <li>Bolsas para disposición de residuos contaminados.</li>
-        <li>Elementos para recolección del material impactado.</li>
-      </ul>
-      <p>
-        Todos los trabajadores deben conocer su ubicación antes de iniciar labores.
-      </p>
+    <div class="card stagger" style="border-left-color: var(--rojo); background:#fffdfa; margin-top: 10px;">
+      <h4 style="color: var(--rojo); margin-bottom: 16px;">🚨 Respuesta Inicial (Paso a Paso)</h4>
+      <div class="proceso-steps" style="margin-bottom: 0;">
+        <div class="paso-item">
+          <div class="paso-num" style="background: var(--rojo);">1</div>
+          <div class="paso-body">
+            <strong>Detén la fuente</strong>
+            <span>Cierra válvulas o apaga bombas solo si es seguro hacerlo.</span>
+          </div>
+        </div>
+        <div class="paso-item">
+          <div class="paso-num" style="background: var(--rojo);">2</div>
+          <div class="paso-body">
+            <strong>Notifica de inmediato</strong>
+            <span>Informa al supervisor o responsable HSEQ del área.</span>
+          </div>
+        </div>
+        <div class="paso-item">
+          <div class="paso-num" style="background: var(--rojo);">3</div>
+          <div class="paso-body">
+            <strong>Protege canales y drenajes</strong>
+            <span>Usa las barreras/salchichas del kit para rodear la mancha y evitar que se expanda.</span>
+          </div>
+        </div>
+        <div class="paso-item" style="padding-bottom: 0;">
+          <div class="paso-num" style="background: var(--rojo);">4</div>
+          <div class="paso-body">
+            <strong>Recupera y limpia</strong>
+            <span>Aplica el absorbente, recógelo y disponlo en las bolsas rojas del kit. No uses agua.</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="card stagger" style="border-left-color: var(--rojo); background:#fff7ed;">
-      <h4>🚨 Respuesta Inicial Ante un Derrame</h4>
-      <ol>
-        <li><strong>Detén la fuente del derrame</strong> si es seguro hacerlo.</li>
-        <li><strong>Notifica inmediatamente</strong> al supervisor o responsable HSEQ.</li>
-        <li><strong>Protege los drenajes y canales</strong> cercanos.</li>
-        <li><strong>Contén el producto</strong> utilizando barreras absorbentes.</li>
-        <li><strong>Recupera el material contaminado</strong> siguiendo instrucciones HSEQ.</li>
-        <li><strong>No laves el derrame con agua.</strong></li>
-        <li><strong>No abandones el sitio</strong> hasta recibir instrucciones.</li>
-      </ol>
-    </div>
-
-    <div class="card stagger" style="border-left-color:#dc2626;">
+    <div class="card stagger" style="border-left-color: var(--texto); margin-top: 14px;">
       <h4>❌ Acciones Prohibidas</h4>
-      <ul>
-        <li>Lavar combustibles hacia drenajes.</li>
-        <li>Ocultar o minimizar un derrame.</li>
-        <li>Continuar el trasiego si existe fuga.</li>
-        <li>Disponer absorbentes contaminados en residuos ordinarios.</li>
-        <li>Abandonar la zona sin informar.</li>
-        <li>Intentar controlar un derrame sin los elementos adecuados.</li>
-      </ul>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.85rem; color: var(--texto-secondary);">
+        <ul style="flex: 1 1 200px; margin: 0;">
+          <li>Lavar combustibles hacia drenajes.</li>
+          <li>Ocultar o minimizar un derrame.</li>
+          <li>Continuar el trasiego si existe fuga.</li>
+        </ul>
+        <ul style="flex: 1 1 200px; margin: 0;">
+          <li>Botar absorbentes en canecas negras.</li>
+          <li>Abandonar la zona sin informar.</li>
+          <li>Actuar sin EPP o kit adecuado.</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="emergency-banner stagger" style="background: linear-gradient(135deg,#15803d,#166534);">
+    <div class="emergency-banner stagger" style="background: linear-gradient(135deg,#15803d,#166534); margin-top: 20px; margin-bottom: 0;">
       <span class="e-ico">🌱</span>
       <div class="e-text">
-        <strong>Protegemos la operación y el ambiente.</strong><br>
-        Un litro de combustible derramado puede generar impactos ambientales
-        significativos. La prevención, la detección temprana y la respuesta oportuna
-        son responsabilidad de todos.
+        <strong>Protegemos la operación y el ambiente.</strong>
+        Un litro de combustible puede generar impactos severos. La prevención, la detección temprana y la respuesta oportuna son tu responsabilidad.
       </div>
     </div>
   </section>

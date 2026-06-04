@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inducción HSEQ – PBI Generación Organización La Paz</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ======= VARIABLES ======= */
+    :root {
+      --azul-oscuro: #0a1e3d;
+      --azul-medio: #1a5096;
+      --azul-claro: #2b7cff;
+      --azul-bright: #4da3ff;
+      --azul-glow: rgba(43,124,255,0.15);
+      --fondo: #f0f3f8;
+      --fondo-warm: #f8f6f3;
+      --texto: #1e293b;
+      --texto-secondary: #64748b;
+      --naranja: #f97316;
+      --naranja-bright: #fb923c;
+      --naranja-glow: rgba(249,115,22,0.12);
+      --blanco: #ffffff;
+      --verde: #16a34a;
+      --verde-bright: #22c55e;
+      --verde-glow: rgba(22,163,74,0.1);
+      --rojo: #dc2626;
+      --rojo-soft: #fef2f2;
+      --gris-claro: #e2e8f0;
+      --gris-medio: #94a3b8;
+      --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+      --shadow-glow: 0 0 40px rgba(26,80,150,0.08);
+      --radio: 12px;
+      --radio-lg: 20px;
+      --radio-xl: 24px;
+      --header-h: 64px;
+      --progress-h: 4px;
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      background-color: var(--fondo);
+      color: var(--texto);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Subtle grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* ======= HEADER ======= */
+    header {
+      background: var(--azul-oscuro);
+      color: var(--blanco);
+      padding: 0 20px;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .header-left { display: flex; align-items: center; gap: 12px; }
+
+    .header-badge {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: var(--font-display);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      transition: all var(--transition);
+    }
+
+    .header-section-name {
+      font-size: 0.8rem;
+      font-weight: 500;
+      opacity: 0.7;
+      max-width: 240px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      transition: opacity var(--transition);
+    }
+
+    .header-logos {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-logos img {
+      height: 38px;
+      object-fit: contain;
+      border-radius: 8px;
+      background-color: var(--blanco);
+      padding: 4px 7px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* ======= BARRA DE PROGRESO ======= */
+    #barraProgreso {
+      height: var(--progress-h);
+      background: linear-gradient(90deg, var(--naranja), var(--naranja-bright), #fbbf24);
+      width: 0%;
+      transition: width 0.6s var(--ease-out-expo);
+      position: sticky;
+      top: var(--header-h);
+      z-index: 1001;
+      box-shadow: 0 0 12px rgba(249,115,22,0.5);
+    }
+
+    /* Percentage tooltip */
+    .progress-pct {
+      position: sticky;
+      top: calc(var(--header-h) + var(--progress-h) + 4px);
+      z-index: 1001;
+      text-align: right;
+      padding-right: 16px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      color: var(--naranja);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      height: 0;
+    }
+    .progress-pct.visible { opacity: 1; }
+
+    /* ======= NAV DOTS (lateral) ======= */
+    #navDots {
+      position: fixed;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 900;
+    }
+
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(10,30,61,0.15);
+      cursor: pointer;
+      transition: all var(--transition-spring);
+      border: none;
+      padding: 0;
+      position: relative;
+    }
+
+    .nav-dot:hover {
+      background: var(--azul-medio);
+      transform: scale(1.6);
+    }
+
+    .nav-dot::before {
+      content: attr(aria-label);
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--azul-oscuro);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-dot:hover::before { opacity: 1; }
+
+    .nav-dot.active {
+      background: var(--naranja);
+      transform: scale(1.8);
+      box-shadow: 0 0 0 3px rgba(249,115,22,0.2);
+    }
+
+    .nav-dot.visited { background: var(--azul-claro); }
+
+    /* ======= CONTENEDOR ======= */
+    .container {
+      background-color: var(--blanco);
+      padding: 40px 44px;
+      max-width: 920px;
+      margin: 24px auto 100px;
+      border-radius: var(--radio-xl);
+      box-shadow: var(--shadow-glow), var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--azul-medio), var(--naranja), var(--azul-claro));
+    }
+
+    /* ======= SECCIONES ======= */
+    section {
+      display: none;
+      opacity: 0;
+    }
+
+    section.active {
+      display: block;
+      animation: sectionEnter 0.55s var(--ease-out-expo) forwards;
+    }
+
+    section.exit-left {
+      display: block;
+      animation: exitLeft 0.35s var(--ease-out-expo) forwards;
+    }
+
+    section.exit-right {
+      display: block;
+      animation: exitRight 0.35s var(--ease-out-expo) forwards;
+    }
+
+    @keyframes sectionEnter {
+      from { opacity: 0; transform: translateY(24px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes exitLeft {
+      from { opacity: 1; transform: translateX(0); }
+      to   { opacity: 0; transform: translateX(-60px); }
+    }
+
+    @keyframes exitRight {
+      from { opacity: 1; transform: translateX(0); }
+      to   { opacity: 0; transform: translateX(60px); }
+    }
+
+    /* Staggered children */
+    section.active .stagger { animation: staggerIn 0.5s var(--ease-out-expo) both; }
+    section.active .stagger:nth-child(1) { animation-delay: 0.06s; }
+    section.active .stagger:nth-child(2) { animation-delay: 0.12s; }
+    section.active .stagger:nth-child(3) { animation-delay: 0.18s; }
+    section.active .stagger:nth-child(4) { animation-delay: 0.24s; }
+    section.active .stagger:nth-child(5) { animation-delay: 0.30s; }
+    section.active .stagger:nth-child(6) { animation-delay: 0.36s; }
+    section.active .stagger:nth-child(7) { animation-delay: 0.42s; }
+    section.active .stagger:nth-child(8) { animation-delay: 0.48s; }
+    section.active .stagger:nth-child(9) { animation-delay: 0.54s; }
+    section.active .stagger:nth-child(10) { animation-delay: 0.60s; }
+
+    @keyframes staggerIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ======= SECCIÓN INTRO ESPECIAL ======= */
+    .intro-hero {
+      text-align: center;
+      padding: 16px 0 24px;
+    }
+    .intro-hero .logo-grande {
+      width: 150px;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 8px 24px rgba(26,80,150,0.15));
+      animation: floatSlow 5s ease-in-out infinite;
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-6px); }
+    }
+    .intro-hero h1 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--azul-oscuro);
+      margin: 0 0 6px;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+    .intro-hero h1 span {
+      background: linear-gradient(135deg, var(--naranja), #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .intro-hero .subtitle {
+      color: var(--texto-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+    .intro-obligatorio {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-left: 4px solid var(--naranja);
+      border-radius: var(--radio);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .intro-obligatorio .ico { font-size: 1.8rem; flex-shrink: 0; }
+    .intro-obligatorio p { font-size: 0.9rem; color: #92400e; margin: 0;}
+    .intro-obligatorio p strong { color: #78350f; }
+
+    .welcome-footer {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radio);
+      padding: 16px;
+      color: #166534;
+      font-weight: 600;
+      font-size: 0.93rem;
+    }
+
+    /* ======= TITULOS ======= */
+    h2 {
+      font-family: var(--font-display);
+      color: var(--azul-oscuro);
+      font-weight: 700;
+      font-size: 1.35rem;
+      margin: 0 0 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--gris-claro);
+      position: relative;
+      letter-spacing: -0.3px;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0;
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--naranja), var(--naranja-bright));
+      border-radius: 2px;
+    }
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      background: var(--azul-oscuro);
+      color: white;
+      border-radius: 9px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-right: 10px;
+      vertical-align: middle;
+      flex-shrink: 0;
+      font-family: var(--font-display);
+    }
+    h4 {
+      font-family: var(--font-display);
+      margin: 0 0 8px;
+      color: var(--azul-oscuro);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    a {
+      color: var(--azul-claro);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+    a:hover { color: var(--azul-oscuro); border-bottom-color: var(--azul-oscuro); }
+    ul { padding-left: 18px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    p { margin-top: 0; }
+
+    /* ======= MASCOTA FLOTANTE ======= */
+    .mascota {
+      float: right;
+      width: 56px;
+      margin: 0 0 14px 16px;
+    }
+    .mascota img {
+      width: 100%;
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+
+    /* ======= IMAGEN SECCIÓN ======= */
+    .imagen-seccion { text-align: center; margin: 20px 0; }
+    .imagen-seccion img {
+      max-width: 100%; height: auto; max-height: 340px;
+      border-radius: var(--radio);
+      box-shadow: var(--shadow-lg);
+      transition: transform var(--transition);
+    }
+    .imagen-seccion img:hover { transform: scale(1.01); }
+
+    .plano-container {
+      text-align: center;
+      border: 2px dashed var(--gris-claro);
+      padding: 14px;
+      background: var(--fondo);
+      border-radius: var(--radio);
+      margin-bottom: 20px;
+    }
+    .plano-container img { width: 100%; max-height: 440px; object-fit: contain; }
+
+    /* ======= CARDS ======= */
+    .card {
+      background: var(--blanco);
+      border: 1px solid var(--gris-claro);
+      border-left: 4px solid var(--azul-claro);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      border-radius: var(--radio);
+      box-shadow: var(--shadow-xs);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .card-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      background: var(--fondo);
+    }
+
+    /* ======= ACORDEÓN ======= */
+    details {
+      background: var(--blanco);
+      border: 1px solid var(--gris-claro);
+      border-left: 4px solid var(--azul-medio);
+      padding: 14px 18px;
+      margin-bottom: 8px;
+      border-radius: var(--radio);
+      cursor: pointer;
+      box-shadow: var(--shadow-xs);
+      transition: all var(--transition);
+    }
+    details:hover { background: #fafcff; border-left-color: var(--azul-claro); }
+    details summary {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.93rem;
+      color: var(--azul-oscuro);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      gap: 10px;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: '+';
+      font-size: 1.1rem;
+      font-weight: 400;
+      transition: transform var(--transition);
+      opacity: 0.4;
+      flex-shrink: 0;
+      font-family: var(--font-display);
+    }
+    details[open] summary::after { content: '−'; opacity: 0.8; }
+    details[open] {
+      border-left-color: var(--naranja);
+      background: #fffdf7;
+      box-shadow: var(--shadow-sm);
+    }
+    details > p, details > ul { margin-top: 12px; font-size: 0.9rem; }
+
+    /* ======= RISK CARDS ======= */
+    .risk-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      padding: 2px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .risk-alto { background: #fef2f2; color: #dc2626; }
+    .risk-medio { background: #fffbeb; color: #d97706; }
+    .risk-preventiva {
+      background: #f0fdf4; color: #16a34a;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 8px 12px;
+      border-radius: var(--radio);
+      margin-top: 10px;
+      display: block;
+      border: 1px solid #bbf7d0;
+    }
+
+    /* ======= REGLAS DE ORO ======= */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .rule-card {
+      background: var(--blanco);
+      border: 1px solid var(--gris-claro);
+      border-top: 3px solid var(--azul-oscuro);
+      padding: 22px 18px 16px;
+      border-radius: var(--radio);
+      box-shadow: var(--shadow-xs);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+    .rule-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-top-color: var(--naranja);
+    }
+    .rule-num {
+      position: absolute;
+      top: -12px; left: 16px;
+      width: 24px; height: 24px;
+      background: var(--azul-oscuro);
+      color: white;
+      border-radius: 7px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .rule-card h4 {
+      font-size: 0.88rem;
+      padding-top: 2px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--gris-claro);
+    }
+    .rule-card ul { padding-left: 16px; margin: 0; font-size: 0.85rem; color: var(--texto-secondary); }
+    .rule-card li { margin-bottom: 5px; }
+
+    /* ======= ESTILOS MINI JUEGOS ======= */
+    .game-container {
+      background: var(--fondo-warm);
+      border: 2px dashed var(--naranja-bright);
+      border-radius: var(--radio-lg);
+      padding: 24px 20px;
+      text-align: center;
+      margin-top: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .game-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--azul-oscuro);
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+    .game-item {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--azul-oscuro);
+      background: white;
+      padding: 14px 20px;
+      border-radius: var(--radio);
+      display: inline-block;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gris-claro);
+      transition: transform 0.3s;
+    }
+    .game-bins {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .game-bin {
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      flex: 1 1 100px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .game-bin:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .game-bin:active { transform: translateY(0); }
+    
+    /* Colores Residuos */
+    .game-bin.blanco { background: #fff; border-color: #cbd5e1; color: #334155; }
+    .game-bin.verde { background: #f0fdf4; border-color: #4ade80; color: #166534; }
+    .game-bin.negro { background: #1e293b; border-color: #0f172a; color: #f1f5f9; }
+    .game-bin.rojo { background: #fef2f2; border-color: #f87171; color: #991b1b; }
+
+    /* Colores Permisos */
+    .game-bin.rutina { background: #f0fdf4; border-color: #4ade80; color: #166534; }
+    .game-bin.permiso { background: #fef2f2; border-color: #f87171; color: #991b1b; }
+
+    .game-feedback {
+      margin-top: 18px;
+      font-weight: 700;
+      min-height: 24px;
+      font-size: 0.95rem;
+    }
+
+    /* ======= EXTINTORES ======= */
+    .extintor-container {
+      display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+    }
+    .extintor-card {
+      flex: 1 1 230px; max-width: 280px;
+      border-radius: var(--radio);
+      padding: 20px 16px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      background: white;
+      border: 1px solid var(--gris-claro);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .extintor-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .ext-abc { border-bottom: 4px solid #eab308; }
+    .ext-co2 { border-bottom: 4px solid #dc2626; }
+    .ext-agua { border-bottom: 4px solid #16a34a; }
+    .extintor-card img {
+      height: 110px; object-fit: contain; margin-top: 12px;
+      transition: transform var(--transition);
+    }
+    .extintor-card:hover img { transform: scale(1.08); }
+    .extintor-uso {
+      font-size: 0.8rem; color: var(--texto-secondary);
+      background: var(--fondo); border-radius: 8px;
+      padding: 8px 10px; margin-top: 10px;
+    }
+    .alerta-extintor {
+      background: #fffbeb;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      border-left: 4px solid var(--naranja);
+      padding: 14px 18px;
+      border-radius: var(--radio);
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    /* ======= CHECKLIST ======= */
+    .checklist-list { list-style: none; padding: 0; margin-bottom: 0; }
+    .checklist-list li {
+      margin-bottom: 8px;
+      background: var(--blanco);
+      padding: 12px 16px;
+      border: 1px solid var(--gris-claro);
+      border-radius: var(--radio);
+      display: flex;
+      align-items: center;
+      transition: all var(--transition);
+    }
+    .checklist-list li:hover { background: #fafcff; border-color: var(--azul-claro); }
+    .checklist-list li.checked-ok {
+      background: #f0fdf4;
+      border-color: var(--verde);
+    }
+    .checklist-list li.checked-ok label span {
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
+    .checklist-list label {
+      cursor: pointer; width: 100%; display: flex;
+      align-items: center; gap: 12px; font-size: 0.9rem;
+    }
+    .checklist-list input[type=checkbox] {
+      width: 20px; height: 20px; flex-shrink: 0;
+      accent-color: var(--verde);
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .checklist-progress {
+      background: var(--gris-claro);
+      border-radius: 50px; height: 6px;
+      margin-bottom: 16px; overflow: hidden;
+    }
+    .checklist-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--verde), var(--verde-bright));
+      border-radius: 50px;
+      transition: width 0.5s var(--ease-out-expo);
+    }
+    .checklist-count {
+      font-size: 0.78rem; color: var(--texto-secondary);
+      text-align: right; margin-bottom: 6px;
+      font-family: var(--font-display);
+      font-weight: 600;
+    }
+
+    .advertencia-checklist {
+      background: #fef2f2; color: #dc2626;
+      padding: 14px 18px;
+      border: 1px solid #fecaca;
+      border-left: 4px solid var(--rojo);
+      border-radius: var(--radio);
+      margin-top: 16px;
+      font-weight: 600;
+      animation: shake 0.5s var(--ease-out-expo);
+    }
+
+    /* ======= EMERGENCIA ======= */
+    .emergency-banner {
+      background: linear-gradient(135deg, #dc2626, #991b1b);
+      color: white;
+      padding: 18px 20px;
+      border-radius: var(--radio);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 4px 16px rgba(220,38,38,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .emergency-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: var(--radio);
+      pointer-events: none;
+    }
+    .emergency-banner .e-ico { font-size: 2rem; flex-shrink: 0; }
+    .emergency-banner .e-text { font-size: 0.9rem; font-weight: 400; }
+    .emergency-banner .e-text strong {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .emergency-steps {
+      counter-reset: estep;
+      list-style: none;
+      padding: 0;
+    }
+    .emergency-steps li {
+      counter-increment: estep;
+      position: relative;
+      padding: 14px 16px 14px 54px;
+      background: white;
+      border: 1px solid var(--gris-claro);
+      border-radius: var(--radio);
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      transition: transform var(--transition);
+    }
+    .emergency-steps li:hover { transform: translateX(4px); }
+    .emergency-steps li::before {
+      content: counter(estep);
+      position: absolute;
+      left: 14px; top: 50%; transform: translateY(-50%);
+      width: 26px; height: 26px;
+      background: var(--rojo);
+      color: white;
+      border-radius: 8px;
+      font-weight: 700; font-size: 0.78rem;
+      font-family: var(--font-display);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ======= AMBIENTAL ======= */
+    .residuo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .residuo-card {
+      border-radius: var(--radio);
+      padding: 16px 14px;
+      text-align: center;
+      box-shadow: var(--shadow-xs);
+      transition: transform var(--transition);
+    }
+    .residuo-card:hover { transform: scale(1.03); }
+    .residuo-card .r-ico { font-size: 1.8rem; margin-bottom: 6px; }
+    .residuo-card h4 { font-size: 0.82rem; margin-bottom: 4px; }
+    .residuo-card p { font-size: 0.78rem; margin: 0; }
+    .r-blanco { background: #f8fafc; border: 2px solid #cbd5e1; color: #334155; }
+    .r-verde  { background: #f0fdf4; border: 2px solid #4ade80; color: #166534; }
+    .r-negro  { background: #1e293b; border: 2px solid #0f172a; color: #f1f5f9; }
+    .r-rojo   { background: #fef2f2; border: 2px solid #f87171; color: #991b1b; }
+
+    /* ======= PERMISOS/ATS ======= */
+    .proceso-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 18px;
+    }
+    .paso-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding-bottom: 16px;
+      position: relative;
+    }
+    .paso-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 17px; top: 38px;
+      width: 2px;
+      bottom: 0;
+      background: linear-gradient(to bottom, var(--azul-claro), transparent);
+    }
+    .paso-num {
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      background: var(--azul-oscuro);
+      color: white;
+      font-weight: 700;
+      font-size: 0.82rem;
+      font-family: var(--font-display);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .paso-body { padding-top: 4px; }
+    .paso-body strong { display: block; font-size: 0.92rem; color: var(--azul-oscuro); margin-bottom: 2px; font-family: var(--font-display); }
+    .paso-body span { font-size: 0.84rem; color: var(--texto-secondary); }
+
+    /* ======= CIERRE / COMPLETADO ======= */
+    .cierre-hero {
+      text-align: center;
+      padding: 10px 0 24px;
+    }
+    .cierre-trophy {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 14px;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%       { transform: translateY(-10px) scale(1.05); }
+    }
+    .cierre-hero h2 {
+      font-size: 1.6rem;
+      border: none; padding: 0; margin-bottom: 8px;
+    }
+    .cierre-hero h2::after { display: none; }
+    .cierre-hero p { color: var(--texto-secondary); }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .video-card {
+      background: var(--fondo);
+      border: 1px solid var(--gris-claro);
+      border-radius: var(--radio);
+      padding: 20px;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .video-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .video-card .v-ico { font-size: 2rem; margin-bottom: 8px; }
+    .video-card h4 { color: var(--azul-oscuro); margin-bottom: 6px; font-size: 0.9rem; }
+    .video-card a { font-size: 0.85rem; }
+
+    .final-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--verde);
+      color: white;
+      padding: 16px 44px;
+      border-radius: var(--radio);
+      font-family: var(--font-display);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.05rem;
+      transition: all var(--transition);
+      box-shadow: 0 4px 14px rgba(22,163,74,0.35);
+      border: none;
+    }
+    .final-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(22,163,74,0.45);
+      color: white;
+      border-bottom: none;
+    }
+
+    /* ======= QR TARJETA ======= */
+    .qr-box {
+      text-align: center;
+      background: var(--fondo);
+      padding: 28px 20px;
+      border-radius: var(--radio);
+      border: 2px dashed var(--gris-claro);
+      max-width: 340px;
+      margin: 0 auto;
+    }
+    .qr-box p { font-weight: 700; color: var(--azul-oscuro); margin-bottom: 14px; font-family: var(--font-display); }
+    .qr-box img {
+      width: 160px;
+      border-radius: var(--radio);
+      box-shadow: var(--shadow-sm);
+    }
+    .qr-hint { font-size: 0.75rem; color: var(--texto-secondary); margin-top: 10px; }
+
+    /* ======= SEGURIDAD VIAL ======= */
+    .vial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 12px;
+    }
+    .vial-card {
+      background: white;
+      border: 1px solid var(--gris-claro);
+      border-radius: var(--radio);
+      padding: 18px 14px;
+      text-align: center;
+      box-shadow: var(--shadow-xs);
+      transition: transform var(--transition);
+    }
+    .vial-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .vial-card .v-ico { font-size: 2rem; margin-bottom: 8px; display: block; }
+    .vial-card h4 { font-size: 0.85rem; margin-bottom: 6px; }
+    .vial-card p { font-size: 0.8rem; color: var(--texto-secondary); margin: 0; }
+    .velocidad-badge {
+      display: inline-block;
+      background: var(--rojo);
+      color: white;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 8px;
+      margin: 4px 0;
+    }
+
+    /* ======= NORMAS COMPORTAMIENTO ======= */
+    .norma-card {
+      background: white;
+      border: 1px solid var(--gris-claro);
+      border-radius: var(--radio);
+      padding: 16px 14px;
+      box-shadow: var(--shadow-xs);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .norma-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .norma-card .n-ico { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+    .norma-card h4 { font-size: 0.85rem; margin-bottom: 6px; }
+    .norma-card p { font-size: 0.82rem; color: var(--texto-secondary); margin: 0; }
+
+    /* ======= TAREAS ALTO RIESGO ======= */
+    .risk-details summary { gap: 10px; }
+    .risk-tag {
+      font-size: 0.65rem; font-weight: 700; padding: 2px 8px;
+      border-radius: 5px; background: #fef2f2; color: #dc2626;
+      white-space: nowrap;
+      font-family: var(--font-display);
+    }
+
+    /* ======= BADGE INFO ======= */
+    .badge-info {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--fondo); border: 1px solid var(--gris-claro);
+      border-radius: 8px; padding: 6px 12px;
+      font-size: 0.78rem; font-weight: 600; color: var(--azul-medio);
+      font-family: var(--font-display);
+      margin: 4px 4px 4px 0;
+    }
+
+    /* ======= BOTONES NAV ======= */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--gris-claro);
+      gap: 12px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--azul-oscuro);
+      color: white;
+      font-family: var(--font-display);
+      font-weight: 600;
+      padding: 12px 28px;
+      border: none;
+      border-radius: var(--radio);
+      cursor: pointer;
+      transition: all var(--transition);
+      box-shadow: var(--shadow-md);
+      font-size: 0.9rem;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .nav-btn:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
+    .nav-btn-prev {
+      background: var(--blanco);
+      color: var(--texto);
+      border: 1px solid var(--gris-claro);
+    }
+    .nav-btn-prev:hover { background: var(--fondo); }
+    .nav-step-counter {
+      font-size: 0.78rem;
+      color: var(--texto-secondary);
+      font-weight: 600;
+      text-align: center;
+      flex: 1;
+      font-family: var(--font-display);
+    }
+
+    /* ======= GRID UTILITARIO ======= */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    /* ======= VIDEO EMBED ======= */
+    .video-wrapper {
+      position: relative; width: 100%; height: 0; padding-bottom: 56.25%;
+      margin-bottom: 20px; border-radius: var(--radio); overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .video-wrapper iframe {
+      position: absolute; width: 100%; height: 100%; border: none;
+    }
+
+    /* ======= SWIPE INDICATOR ======= */
+    .swipe-hint {
+      display: none;
+      text-align: center;
+      padding: 8px;
+      font-size: 0.72rem;
+      color: var(--texto-secondary);
+      opacity: 0.6;
+      animation: swipeHint 2s ease-in-out infinite;
+    }
+    @keyframes swipeHint {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(8px); }
+    }
+
+    /* ======= SCREEN READER ONLY ======= */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ======= LIVE REGION ======= */
+    #liveAnnouncer {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ======= FOCUS VISIBLE ======= */
+    :focus-visible {
+      outline: 2px solid var(--azul-claro);
+      outline-offset: 2px;
+    }
+
+    button:focus:not(:focus-visible) { outline: none; }
+
+    /* ======= RESPONSIVE ======= */
+    @media screen and (max-width: 768px) {
+      .container {
+        padding: 24px 18px;
+        margin: 12px 8px 80px;
+        border-radius: var(--radio-lg);
+      }
+      .header-section-name { display: none; }
+      .grid-2, .rules-grid { grid-template-columns: 1fr !important; }
+      .nav-buttons { flex-wrap: wrap; }
+      .nav-btn { padding: 11px 20px; font-size: 0.85rem; }
+      #navDots { display: none; }
+      .intro-hero h1 { font-size: 1.5rem; }
+      .intro-stats { gap: 10px; }
+      .cierre-hero h2 { font-size: 1.3rem; }
+      .final-button { padding: 14px 28px; font-size: 0.95rem; }
+      .swipe-hint { display: block; }
+    }
+
+    @media screen and (max-width: 480px) {
+      header { padding: 0 14px; }
+      .header-logos img { height: 32px; }
+      .header-badge { font-size: 0.7rem; padding: 3px 10px; }
+      .container { padding: 20px 14px; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="liveAnnouncer" aria-live="polite" aria-atomic="true"></div>
+
+<header role="banner">
+  <div class="header-left">
+    <div class="header-badge" id="headerBadge" aria-label="Sección actual">1 / 17</div>
+    <div>
+      <div class="header-section-name" id="headerSectionName">Bienvenida</div>
+    </div>
+  </div>
+  <div class="header-logos">
+    <img src="https://i.postimg.cc/gcX7rNgd/Logo-PBI.png" alt="Logo PBI" loading="eager">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI" loading="eager">
+  </div>
+</header>
+
+<div id="barraProgreso" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso de la inducción"></div>
+<div class="progress-pct" id="progressPct" aria-hidden="true"></div>
+
+<nav id="navDots" aria-label="Navegación rápida entre secciones"></nav>
+
+<main class="container" id="mainContainer" role="main">
+
+  <section class="active" data-title="Bienvenida" aria-label="Sección 1: Bienvenida">
+    <div class="intro-hero">
+      <img src="https://i.postimg.cc/gcX7rNgd/Logo-PBI.png" alt="Logo PBI" class="logo-grande" loading="eager">
+      <h1>¡Bienvenido a<br><span>PBI Generación<br>Organización La Paz!</span></h1>
+      <p class="subtitle">San Carlos de Guaroa, Meta · Inducción HSEQ</p>
+
+      <div class="intro-obligatorio stagger">
+        <span class="ico">📌</span>
+        <p>Esta inducción es <strong>obligatoria</strong>. Su aprobación es requisito previo para cualquier ingreso o actividad dentro de nuestras instalaciones. Al finalizar deberás completar la evaluación.</p>
+      </div>
+
+      <div class="welcome-footer stagger">
+        🌱 Diseñada para que actúes de forma <strong>segura</strong>, <strong>responsable</strong> y coherente con nuestra cultura HSEQ.
+      </div>
+    </div>
+  </section>
+
+  <section data-title="Objetivo de la Inducción" aria-label="Sección 2: Objetivo de la Inducción">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">2</span>Objetivo de la Inducción</h2>
+    <p class="stagger">Te invitamos a ver el siguiente video introductorio que refuerza el propósito de esta inducción.</p>
+
+    <div class="video-wrapper stagger">
+      <iframe src="https://streamable.com/e/uq5idk?" allowfullscreen title="Video introductorio de la inducción HSEQ" loading="lazy"></iframe>
+    </div>
+
+    <div class="imagen-seccion stagger" style="background:#e2e8f0; padding:40px; border-radius:12px; border:2px dashed #cbd5e1; color:var(--texto-secondary);">
+      <strong>[FOTO PLANTA LA PAZ - PENDIENTE VALIDACIÓN CON ORGANIZACIÓN LA PAZ]</strong>
+    </div>
+
+    <div class="card stagger" style="border-left-color: var(--azul-medio);">
+      <h4>🎯 Propósito</h4>
+      <p style="margin:0;">Brindar a todo visitante o contratista las herramientas y conocimientos esenciales en materia de <strong>Seguridad, Salud, Ambiente y Calidad (HSEQ)</strong>, garantizando la integridad de las personas, el entorno y la continuidad de nuestras operaciones de generación eléctrica.</p>
+    </div>
+  </section>
+
+  <section data-title="Políticas Corporativas" aria-label="Sección 3: Políticas Corporativas">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">3</span>Políticas Corporativas</h2>
+    <p class="stagger">Estas son las políticas esenciales que rigen nuestro actuar diario en PBI. Haz clic en cada una para conocer su alcance:</p>
+
+    <details class="stagger">
+      <summary>📌 Política Integral HSEQ</summary>
+      <p>Establece nuestro compromiso con la protección de la vida, la salud, el ambiente y la calidad en todos los procesos.</p>
+      <p><a href="https://drive.google.com/open?id=1To8ksi0_bzYq_hzyExQr8FiCRMw2FOy4" target="_blank" rel="noopener">📄 Ver documento PDF completo →</a></p>
+    </details>
+
+    <details class="stagger">
+      <summary>🚫 Política de Prevención SPA</summary>
+      <p>Fomenta ambientes seguros y saludables, orientadas a reducir los riesgos asociados al uso de sustancias psicoactivas. <strong>Cero alcohol · Cero drogas.</strong></p>
+      <p><a href="https://drive.google.com/open?id=19_eRtxWZ1DvwmY0pnxqImaBqKB7KbdRr" target="_blank" rel="noopener">📄 Ver documento PDF completo →</a></p>
+    </details>
+
+    <details class="stagger">
+      <summary>🚗 Política de Seguridad Vial</summary>
+      <p>Promueve una cultura de movilidad segura dentro y fuera de nuestras instalaciones para todos los colaboradores y visitantes.</p>
+      <p><a href="https://drive.google.com/open?id=1NAmg1SaRJ_Rzt3DeqWVO9znXfWT3OZOA" target="_blank" rel="noopener">📄 Ver documento PDF completo →</a></p>
+    </details>
+  </section>
+
+  <section data-title="Peligros y Riesgos Generales" aria-label="Sección 4: Peligros y Riesgos Generales">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">4</span>Peligros y Riesgos Generales</h2>
+    <p class="stagger">Durante tu visita podrías estar expuesto a los siguientes peligros. Despliega cada uno para conocer la medida preventiva:</p>
+
+    <details class="stagger">
+      <summary>⚡ Riesgo Eléctrico <span class="risk-tag">ALTO</span></summary>
+      <p>Presencia de subestación eléctrica, generadores a GLP y tableros energizados. Representan peligro crítico de electrocución o arco eléctrico.</p>
+      <span class="risk-preventiva">✅ No toques ni te acerques a equipos eléctricos, celdas o subestaciones sin autorización expresa y entrenamiento previo.</span>
+    </details>
+
+    <details class="stagger">
+      <summary>🔥 Riesgo de Incendio y Explosión <span class="risk-tag">ALTO</span></summary>
+      <p>Operamos con tanques de GLP, tanques de Diésel (ACPM) y sistemas con atmósferas que pueden ser explosivas (ATEX).</p>
+      <span class="risk-preventiva">✅ Prohibido generar fuentes de ignición. Usa ropa antiestática (100% algodón) en áreas clasificadas y respeta las restricciones de equipos electrónicos.</span>
+    </details>
+
+    <details class="stagger">
+      <summary>⚙️ Riesgos Mecánicos y Ruido <span class="risk-tag">ALTO</span></summary>
+      <p>Equipos rotativos, motores CAT a GLP en operación continua, herramientas y altos niveles de presión sonora.</p>
+      <span class="risk-preventiva">✅ Mantente fuera del alcance de partes móviles, respeta guardas de seguridad y usa protección auditiva obligatoria en zonas de motores.</span>
+    </details>
+
+    <details class="stagger">
+      <summary>🐍 Riesgo Biológico <span class="risk-tag" style="background:#fffbeb;color:#d97706;">MEDIO</span></summary>
+      <p>Por nuestra ubicación geográfica en el Meta, existe exposición a ofidios (serpientes), picaduras de insectos y otros animales propios de la región.</p>
+      <span class="risk-preventiva">✅ Camina solo por senderos y áreas demarcadas. Usa botas de seguridad y reporta de inmediato cualquier avistamiento animal.</span>
+    </details>
+
+    <details class="stagger">
+      <summary>☀️ Riesgo por Estrés Térmico <span class="risk-tag" style="background:#fffbeb;color:#d97706;">MEDIO</span></summary>
+      <p>Las altas temperaturas ambientales de San Carlos de Guaroa sumadas a la radiación térmica de los motores pueden generar golpe de calor o deshidratación rápida.</p>
+      <span class="risk-preventiva">✅ Mantén una hidratación constante, utiliza bloqueador solar y realiza pausas en zonas de sombra o ventiladas cuando sea necesario.</span>
+    </details>
+  </section>
+
+  <section data-title="Las 10 Reglas de Oro" aria-label="Sección 5: Las 10 Reglas de Oro">
+    <div class="mascota"><img src="https://i.postimg.cc/fRBGStH9/diez.png" alt="Escudo 10 Reglas" loading="lazy"></div>
+    <h2><span class="section-number">5</span>Las 10 Reglas de Oro</h2>
+    <p class="stagger">Estos compromisos son <strong>innegociables</strong>. Su cumplimiento protege la vida de todos:</p>
+
+    <div class="rules-grid">
+      <div class="rule-card stagger">
+        <div class="rule-num">1</div>
+        <h4>Antes de empezar, revisa y planifica</h4>
+        <ul>
+          <li>Obtén el permiso de trabajo antes de iniciar.</li>
+          <li>Realiza el ATS con tu equipo, incluso en tareas rutinarias.</li>
+          <li>Verifica que exista el procedimiento PON y anexos.</li>
+        </ul>
+      </div>
+      <div class="rule-card stagger">
+        <div class="rule-num">2</div>
+        <h4>Aísla bien las energías peligrosas</h4>
+        <ul>
+          <li>Bloquea, etiqueta y aísla todas las fuentes de energía (LOTO).</li>
+          <li>Incluye eléctricas, térmicas, neumáticas y partes móviles.</li>
+          <li>No retires bloqueos sin autorización.</li>
+        </ul>
+      </div>
+      <div class="rule-card stagger">
+        <div class="rule-num">3</div>
+        <h4>Cuidado con trabajos en caliente</h4>
+        <ul>
+          <li>Verifica el permiso y el monitoreo de gases.</li>
+          <li>Ten extintores disponibles y listos para usar.</li>
+          <li>Retira materiales inflamables del área.</li>
+        </ul>
+      </div>
+      <div class="rule-card stagger">
+        <div class="rule-num">4</div>
+        <h4>Con cargas, no te la juegues</h4>
+        <ul>
+          <li>Revisa eslingas, ganchos y estado de la carga.</li>
+          <li>Nunca estés bajo una carga suspendida.</li>
+          <li>Mantén comunicación clara con el operador.</li>
+        </ul>
+      </div>
+      <div class="rule-card stagger">
+        <div class="rule-num">5</div>
+        <h4>Protégete al trabajar en altura</h4>
+        <ul>
+          <li>Usa arnés y puntos de anclaje certificados.</li>
+          <li>Asegura herramientas y materiales.</li>
+          <li>Verifica tu equipo antes de usarlo.</li>
+        </ul>
+      </div>
+      <div class="rule-card stagger">
+        <div class="rule-num">6</div>
+        <h4>Conduce con responsabilidad</h4>
+        <ul>
+          <li>Usa el cinturón de seguridad siempre.</li>
+          <li>No uses el celular ni manejes fatigado.</li>
+          <li>Respeta los límites de velocidad.</li>
+        </ul>
+      </div>
+      <div class="rule-card stagger">
+        <div class="rule-num">7</div>
+        <h4>Usa siempre tu EPP</h4>
+        <ul>
+          <li>Selecciona el EPP adecuado según la tarea.</li>
+          <li>Verifica que esté en buen estado antes de usarlo.</li>
+          <li>Aplica siempre, incluso en tareas cortas.</li>
+        </ul>
+      </div>
+      <div class="rule-card stagger">
+        <div class="rule-num">8</div>
+        <h4>Maneja sustancias peligrosas</h4>
+        <ul>
+          <li>Etiqueta los productos correctamente.</li>
+          <li>Consulta la hoja de seguridad antes de usarlos.</li>
+          <li>Actúa de inmediato en caso de derrames.</li>
+        </ul>
+      </div>
+      <div class="rule-card stagger">
+        <div class="rule-num">9</div>
+        <h4>No toques equipos eléctricos sin permiso</h4>
+        <ul>
+          <li>Solo personal autorizado puede intervenir.</li>
+          <li>Verifica corte, señalización y aislamiento.</li>
+          <li>Usa herramientas certificadas.</li>
+        </ul>
+      </div>
+      <div class="rule-card stagger" style="border-top-color: var(--naranja);">
+        <div class="rule-num" style="background: var(--naranja);">10</div>
+        <h4>Si no es seguro, detente</h4>
+        <ul>
+          <li>Tienes derecho y deber de detener tareas peligrosas.</li>
+          <li>Reporta al supervisor o a HSEQ.</li>
+          <li>No reinicies hasta controlar el riesgo.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section data-title="Permisos de Trabajo y AST" aria-label="Sección 6: Permisos de Trabajo">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">6</span>Permisos de Trabajo (INS-HSEQ-01)</h2>
+    <p class="stagger">El Sistema de Permisos de Trabajo (SPT) previene accidentes y controla riesgos. Se requiere un permiso cuando un tercero entra al área de otro, o siempre que se intervengan equipos e instalaciones. La herramienta base para toda tarea es el <strong>AST (Análisis de Seguridad del Trabajo)</strong>, elaborado en conjunto.</p>
+
+    <h4 class="stagger" style="margin-top: 20px;">🔄 Flujo del Permiso de Trabajo</h4>
+    <div class="proceso-steps stagger">
+      <div class="paso-item">
+        <div class="paso-num">1</div>
+        <div class="paso-body">
+          <strong>Solicitud y Preparación</strong>
+          <span>La Autoridad Ejecutante (AE) planea y solicita el permiso con al menos un día de anticipación.</span>
+        </div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num">2</div>
+        <div class="paso-body">
+          <strong>Revisión y Aprobación</strong>
+          <span>La Autoridad de Área (AA) revisa, aprueba y firma. La Autoridad de Área Local (AAL) valida condiciones en sitio.</span>
+        </div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num">3</div>
+        <div class="paso-body">
+          <strong>Ejecución y Control</strong>
+          <span>El permiso debe estar visible. La AAL lidera la charla de inicio junto al AE. Cualquier persona puede detener el trabajo ante condiciones inseguras.</span>
+        </div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num">4</div>
+        <div class="paso-body">
+          <strong>Revalidación o Cierre</strong>
+          <span>Se revalida según vigencia o se cierra devolviendo el permiso a la AAL para inspección final.</span>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="stagger" style="margin-top: 20px;">👥 Roles y Equivalencia para Contratistas</h4>
+    <div class="grid-2 stagger">
+      <div class="card">
+        <div class="card-icon" style="background:#fef2f2; color:#dc2626;">🛠️</div>
+        <h4>El Ejecutante (AE)</h4>
+        <p style="font-size:0.85rem; color:var(--texto-secondary);">Equivalente al <strong>Jefe de Cuadrilla o Líder Técnico</strong>. Ejecuta el trabajo, garantiza el cumplimiento del permiso y lidera al grupo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#fffbeb; color:#d97706;">📍</div>
+        <h4>Autoridad Local (AAL)</h4>
+        <p style="font-size:0.85rem; color:var(--texto-secondary);">Equivalente al <strong>Supervisor de Campo</strong>. Entrega el sitio, valida condiciones y lidera la charla de inicio.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#f0fdf4; color:#16a34a;">✍️</div>
+        <h4>Autoridad de Área (AA)</h4>
+        <p style="font-size:0.85rem; color:var(--texto-secondary);">Equivalente al <strong>Supervisor del Contratista / Cliente</strong>. Tiene control operativo global, aprueba y firma los permisos.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#f5f3ff; color:#7c3aed;">🔐</div>
+        <h4>Autoridad Aislante (AI)</h4>
+        <p style="font-size:0.85rem; color:var(--texto-secondary);"><strong>Especialista Técnico</strong>. Ejecuta y documenta los aislamientos físicos (LOTO).</p>
+      </div>
+    </div>
+
+    <div class="card stagger" style="border-left-color: var(--naranja); margin-top: 14px;">
+      <h4 style="color: var(--naranja);">⏳ Vigencias, Pausas y Suspensión</h4>
+      <ul style="font-size: 0.88rem; color: var(--texto-secondary);">
+        <li><strong>Trabajos en Frío y Eléctricos:</strong> Vigencia de hasta 7 turnos de 12 horas.</li>
+        <li><strong>Trabajos en Caliente:</strong> Vigencia máxima de 24 horas (2 turnos).</li>
+        <li><strong>Cambio de turno:</strong> Todo permiso debe revalidarse en cada cambio de turno.</li>
+        <li><strong>Pausas Cortas:</strong> Si la tarea se interrumpe por <strong>más de 2 horas</strong> (ej. clima), se debe revalidar.</li>
+        <li><strong>Suspensión Definitiva:</strong> Si hay inactividad por <strong>más de 48 horas</strong>, el permiso muere y se tramita uno nuevo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section data-title="Riesgos: Generación" aria-label="Sección 7: Riesgos de Generación">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">7</span>Riesgos Específicos: Generación Eléctrica a GLP y Diésel</h2>
+
+    <div class="emergency-banner stagger" style="background: linear-gradient(135deg, #ea580c, #b91c1c);">
+      <span class="e-ico">⚠️</span>
+      <div class="e-text">
+        <strong>Contexto de alto riesgo</strong>
+        Te encuentras en una planta de generación. Existe manipulación de grandes volúmenes de combustible (GLP y Diésel) y energía eléctrica de alta tensión.
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card stagger" style="border-left-color: #7c3aed;">
+        <div class="card-icon" style="background:#f5f3ff; font-size:1.4rem;">🔊</div>
+        <h4>Ruido Industrial (Motores CAT)</h4>
+        <p style="font-size:0.88rem;">El funcionamiento de los generadores y motores a GLP producen altos decibeles de manera constante.</p>
+        <span class="risk-preventiva">Uso permanente de protección auditiva de inserción y/o copa cerca a los generadores.</span>
+      </div>
+
+      <div class="card stagger" style="border-left-color: #2563eb;">
+        <div class="card-icon" style="background:#eff6ff; font-size:1.4rem;">⚡</div>
+        <h4>Arco Eléctrico y Alta Tensión</h4>
+        <p style="font-size:0.88rem;">Subestación, celdas y cuartos de control manejan energías capaces de producir accidentes fatales.</p>
+        <span class="risk-preventiva">Distancia obligatoria a zonas delimitadas. Prohibida la intervención sin LOTO y competencias.</span>
+      </div>
+
+      <div class="card stagger" style="border-left-color: var(--rojo);">
+        <div class="card-icon" style="background:#fef2f2; font-size:1.4rem;">🔥</div>
+        <h4>Atmósferas Explosivas (GLP)</h4>
+        <p style="font-size:0.88rem;">Las zonas de tanques de GLP e isletas de válvulas tienen alta probabilidad de mezcla inflamable.</p>
+        <span class="risk-preventiva">Herramientas antichispa, ropa 100% algodón antiestática y restricción estricta de celulares.</span>
+      </div>
+
+      <div class="card stagger" style="border-left-color: var(--naranja);">
+        <div class="card-icon" style="background:#fffbeb; font-size:1.4rem;">🌡️</div>
+        <h4>Superficies Calientes</h4>
+        <p style="font-size:0.88rem;">Líneas de escape, turbos y bloques de los motores CAT alcanzan temperaturas críticas durante su operación.</p>
+        <span class="risk-preventiva">Evita el contacto directo con motores y tuberías. Respeta las barreras térmicas.</span>
+      </div>
+    </div>
+  </section>
+
+  <section data-title="Tareas de Alto Riesgo" aria-label="Sección 8: Tareas de Alto Riesgo">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">8</span>Tareas de Alto Riesgo</h2>
+    <p class="stagger">Estas tareas requieren controles rigurosos, personal competente y <strong>Certificados de Apoyo al Permiso de Trabajo</strong> vigentes antes del inicio:</p>
+
+    <details class="risk-details stagger">
+      <summary>🧗 Trabajo en Alturas <span class="risk-tag">PERMISO ESPECIAL</span></summary>
+      <p>Aplica para tareas desde <strong>2 metros</strong> de altura. Requiere certificación de trabajo en alturas vigente, arnés homologado, líneas de vida certificadas y Certificado de Apoyo aprobado.</p>
+    </details>
+
+    <details class="risk-details stagger">
+      <summary>🚧 Espacios Confinados <span class="risk-tag">PERMISO ESPECIAL</span></summary>
+      <p>Tanques de almacenamiento o trincheras. Requiere medición de gases (O₂, CO, H₂S, LEL), ventilación mecánica, vigía externo, plan de rescate activado y Certificado de Apoyo.</p>
+    </details>
+
+    <details class="risk-details stagger">
+      <summary>🔥 Trabajos en Caliente <span class="risk-tag">PERMISO ESPECIAL</span></summary>
+      <p>Soldadura, oxicorte, esmerilado cerca de motores o tanques de combustible. Requiere monitoreo continuo de atmósferas explosivas, extintores listos y eliminación de materiales inflamables.</p>
+    </details>
+
+    <details class="risk-details stagger">
+      <summary>🏗️ Izaje de Cargas <span class="risk-tag">PERMISO ESPECIAL</span></summary>
+      <p>Levantamiento de motores o repuestos pesados. Requiere plan de izaje, equipos y accesorios certificados, y área completamente delimitada.</p>
+    </details>
+
+    <details class="risk-details stagger">
+      <summary>⚡ Energías Peligrosas – LOTO <span class="risk-tag">PERMISO ESPECIAL</span></summary>
+      <p>Intervención en tableros eléctricos, subestación o líneas de GLP/ACPM. Requiere bloqueo físico con candado personal, etiquetado y Certificado de Aislamiento firmado.</p>
+    </details>
+
+    <div class="game-container stagger" style="border-color: var(--naranja);">
+      <div class="game-title">🎮 Mini-Juego: ¿Requiere Permiso Especial?</div>
+      <p style="font-size: 0.9rem; margin-bottom: 15px;">Toca si la tarea es de Rutina (Solo AST) o de Alto Riesgo (Exige Permiso de Trabajo firmado).</p>
+      
+      <div id="game2-item-text" class="game-item" style="color: var(--azul-oscuro);">Cargando...</div>
+      
+      <div class="game-bins" id="game2-bins">
+        <div class="game-bin rutina" data-risk="rutina">Rutina (Solo AST)</div>
+        <div class="game-bin permiso" data-risk="permiso">Alto Riesgo (Exige PT)</div>
+      </div>
+
+      <div id="game2-feedback" class="game-feedback"></div>
+    </div>
+  </section>
+
+  <section data-title="Gestión Ambiental" aria-label="Sección 9: Gestión Ambiental">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">9</span>Gestión Ambiental y Control de Derrames</h2>
+    <p class="stagger">En PBI velamos por el entorno. Si manipulas aceites o Diésel, debes conocer la ubicación de los kits antiderrame. La correcta clasificación de residuos sigue este código de colores:</p>
+
+    <div class="residuo-grid">
+      <div class="residuo-card r-blanco stagger">
+        <div class="r-ico">♻️</div>
+        <h4>BLANCO · Aprovechables</h4>
+        <p>Papel, cartón, plástico limpio, vidrio.</p>
+      </div>
+      <div class="residuo-card r-verde stagger">
+        <div class="r-ico">🌿</div>
+        <h4>VERDE · Orgánicos</h4>
+        <p>Restos de comida, cáscaras, poda.</p>
+      </div>
+      <div class="residuo-card r-negro stagger">
+        <div class="r-ico">🗑️</div>
+        <h4>NEGRO · No Aprovechables</h4>
+        <p>Papel higiénico, servilletas usadas.</p>
+      </div>
+      <div class="residuo-card r-rojo stagger">
+        <div class="r-ico">☣️</div>
+        <h4>ROJO · Peligrosos</h4>
+        <p>Trapos con aceite, filtros, envases químicos.</p>
+      </div>
+    </div>
+
+    <div class="game-container stagger">
+      <div class="game-title">🎮 Mini-Juego: ¿Dónde va este residuo?</div>
+      <p style="font-size: 0.9rem; margin-bottom: 15px;">Toca la caneca correcta para avanzar.</p>
+      
+      <div id="game-item-text" class="game-item">Cargando...</div>
+      
+      <div class="game-bins" id="game-bins">
+        <div class="game-bin blanco" data-bin="blanco">Blanco</div>
+        <div class="game-bin verde" data-bin="verde">Verde</div>
+        <div class="game-bin negro" data-bin="negro">Negro</div>
+        <div class="game-bin rojo" data-bin="rojo">Rojo</div>
+      </div>
+
+      <div id="game-feedback" class="game-feedback"></div>
+    </div>
+  </section>
+
+  <section data-title="Plan de Emergencias" aria-label="Sección 10: Plan de Emergencias">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">10</span>Protocolo de Emergencias</h2>
+
+    <div class="emergency-banner stagger">
+      <span class="e-ico">🚨</span>
+      <div class="e-text">
+        <strong>Atención Crítica: Planta de Generación Eléctrica</strong>
+        Manejamos GLP, Diésel y subestación eléctrica. Ante una contingencia, el comportamiento rápido y disciplinado salva vidas.
+      </div>
+    </div>
+
+    <p class="stagger" style="font-weight: 600; margin-bottom: 18px;">Si escuchas la alarma o presencias un incidente, aplica estas reglas innegociables:</p>
+
+    <ol class="emergency-steps">
+      <li class="stagger"><strong>Parada de Emergencia (ESD):</strong> En caso de fuga incontrolable de GLP o conato mayor, el personal capacitado activará los sistemas de parada y corte de suministro.</li>
+      <li class="stagger"><strong>Cero Ignición:</strong> ¡NUNCA arranques un vehículo, uses un radio convencional o saques tu celular durante una fuga de gas! Una chispa mínima puede detonar el GLP.</li>
+      <li class="stagger"><strong>Evacúa observando el viento:</strong> Busca de inmediato la manga de viento. Dirígete al punto de encuentro caminando con el <strong>viento cruzado (perpendicular)</strong>, nunca a favor ni en contra de la dirección del gas. Aléjate de la subestación.</li>
+      <li class="stagger"><strong>Fuego en Generadores/Subestación:</strong> Nunca uses agua. Los brigadistas están capacitados para el uso de extintores específicos (CO2 / Polvo Seco).</li>
+      <li class="stagger"><strong>Punto de Encuentro:</strong> Preséntate en la zona de conteo señalizada. Nadie vuelve a entrar a las instalaciones hasta que el Jefe de Emergencias declare que es seguro.</li>
+    </ol>
+
+    <div class="stagger" style="margin-top: 20px; padding: 18px; background: #fffbeb; border: 2px dashed #f59e0b; border-radius: 12px; text-align: center; color: var(--azul-oscuro);">
+      <strong>[DIRECTORIO DE EMERGENCIAS Y BRIGADISTAS - PENDIENTE VALIDACIÓN CON ORGANIZACIÓN LA PAZ]</strong>
+    </div>
+  </section>
+
+  <section data-title="Plano de Evacuación" aria-label="Sección 11: Plano de Evacuación">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">11</span>Plano de Evacuación y Mapa de Riesgos</h2>
+    <p class="stagger">Identifica las salidas de emergencia y el punto de encuentro en la Organización La Paz antes de iniciar cualquier actividad.</p>
+
+    <div class="plano-container stagger" style="padding: 50px; background: #f8fafc;">
+      <strong>[PLANO DE EVACUACIÓN Y MAPA DE RIESGOS - PENDIENTE VALIDACIÓN CON ORGANIZACIÓN LA PAZ]</strong>
+    </div>
+
+    <div class="card stagger" style="border-left-color: var(--verde);">
+      <h4>✅ Recomendaciones Clave</h4>
+      <ul style="margin:0;">
+        <li>Ubica el punto <em>"Usted está aquí"</em> en los mapas físicos de tu área de trabajo.</li>
+        <li>Identifica las rutas seguras alejadas de los tanques de GLP y subestación.</li>
+        <li>No te devuelvas por objetos personales una vez iniciada la evacuación.</li>
+        <li>Mantén el orden y sigue las instrucciones de los brigadistas locales.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section data-title="Tipos de Extintores" aria-label="Sección 12: Tipos de Extintores">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">12</span>Tipos de Extintores</h2>
+
+    <div class="alerta-extintor stagger">
+      <span>⚠️</span>
+      Solo personal capacitado y entrenado debe manipular los extintores. Conoce su ubicación y tipo según el área (Motores, Subestación, Talleres).
+    </div>
+
+    <div class="extintor-container">
+      <div class="extintor-card ext-abc stagger">
+        <h4>🟡 ABC · Polvo Químico Seco</h4>
+        <div class="extintor-uso">Fuegos de clase A, B y C: líquidos inflamables (Diésel), equipos eléctricos iniciales.</div>
+        <img src="https://i.postimg.cc/Bny0bGmN/EXTINTOR-TIPO-ABC.jpg" alt="Extintor tipo ABC de polvo químico seco" loading="lazy">
+      </div>
+      <div class="extintor-card ext-co2 stagger">
+        <h4>🔴 CO2 · Gas Carbónico</h4>
+        <div class="extintor-uso">Equipos eléctricos y electrónicos (Generadores, Subestación, Sala de Control). No deja residuo.</div>
+        <img src="https://i.postimg.cc/V6fDcJXh/TIPO-CO2.png" alt="Extintor tipo CO2 de gas carbónico" loading="lazy">
+      </div>
+      <div class="extintor-card ext-agua stagger">
+        <h4>🟢 AGUA · Solkaflam</h4>
+        <div class="extintor-uso">Combustibles sólidos (madera, papel) e incendios incipientes en oficinas o campamentos.</div>
+        <img src="https://i.postimg.cc/28HnJH5n/Extintor-tipo-A.png" alt="Extintor tipo agua Solkaflam" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section data-title="Tarjetas de Aporte" aria-label="Sección 13: Tarjetas de Aporte">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">13</span>Tarjetas de Aporte</h2>
+    <p class="stagger">Son el medio oficial para <strong>reportar actos inseguros, condiciones peligrosas o incidentes ambientales</strong>. Tu reporte ayuda a prevenir accidentes.</p>
+
+    <div class="grid-2 stagger" style="margin-bottom: 20px;">
+      <div class="card" style="border-left-color: var(--naranja);">
+        <h4>📢 ¿Qué reportar?</h4>
+        <ul style="margin:0; font-size:0.88rem;">
+          <li>Actos inseguros observados</li>
+          <li>Condiciones peligrosas o fugas</li>
+          <li>Incidentes ambientales (derrames de aceite/ACPM)</li>
+          <li>Sugerencias de mejora</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left-color: var(--verde);">
+        <h4>🎯 ¿Por qué es importante?</h4>
+        <ul style="margin:0; font-size:0.88rem;">
+          <li>Previene accidentes antes de que ocurran</li>
+          <li>Mejora las condiciones operativas</li>
+          <li>Fortalece la cultura de seguridad de La Paz</li>
+          <li>Es anónimo y sin represalias</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qr-box stagger">
+      <p>📱 Escanea el QR para reportar ahora:</p>
+      <img src="https://i.postimg.cc/0Nhp4dDd/Captura-de-pantalla-2025-06-17-093430.png" alt="Código QR para acceder al formulario de Tarjetas de Aporte" loading="lazy">
+      <p class="qr-hint">Apunta la cámara de tu celular al código QR</p>
+    </div>
+  </section>
+
+  <section data-title="Normas de Comportamiento" aria-label="Sección 14: Normas de Comportamiento">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">14</span>Normas de Comportamiento</h2>
+    <p class="stagger">Se espera que cada contratista o visitante en la Planta de Generación La Paz mantenga un comportamiento seguro y respetuoso:</p>
+
+    <div class="grid-2">
+      <div class="norma-card stagger">
+        <span class="n-ico">🚭</span>
+        <h4>Cero Humo / Vapers</h4>
+        <p>Prohibido fumar y usar cigarrillos electrónicos en toda la instalación debido al riesgo intrínseco de combustibles.</p>
+      </div>
+      <div class="norma-card stagger">
+        <span class="n-ico">🤝</span>
+        <h4>Respeto y Cortesía</h4>
+        <p>Sigue siempre las indicaciones de los supervisores locales y personal de operaciones de la planta.</p>
+      </div>
+      <div class="norma-card stagger">
+        <span class="n-ico">📸</span>
+        <h4>Fotografías Restringidas</h4>
+        <p>Se requieren equipos intrínsecamente seguros en áreas de GLP y permiso expreso del cliente para tomar fotos.</p>
+      </div>
+      <div class="norma-card stagger">
+        <span class="n-ico">🛑</span>
+        <h4>No Manipules Equipos</h4>
+        <p>Absolutamente prohibido intervenir tableros, válvulas de combustible o arrancar motores sin autorización.</p>
+      </div>
+      <div class="norma-card stagger">
+        <span class="n-ico">📍</span>
+        <h4>Zonas Restringidas</h4>
+        <p>Respeta el cerramiento de la subestación, zonas de tanques y cuartos técnicos. Acceso solo a áreas autorizadas.</p>
+      </div>
+      <div class="norma-card stagger">
+        <span class="n-ico">📵</span>
+        <h4>Cero Distracciones</h4>
+        <p>No camines leyendo el celular cerca a maquinaria pesada, áreas de izaje o cruces vehiculares.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-title="Seguridad Vial y Transporte" aria-label="Sección 15: Seguridad Vial">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">15</span>Tránsito Interno y Seguridad Vial</h2>
+    <p class="stagger">🚘 Aplica estas normas básicas de movilidad si ingresas con vehículos, maquinaria o como peatón:</p>
+
+    <div class="vial-grid">
+      <div class="vial-card stagger">
+        <span class="v-ico">📵</span>
+        <h4>Sin Distracciones</h4>
+        <p>No uses el celular mientras conduces ni caminas por zonas operativas o parqueaderos.</p>
+      </div>
+      <div class="vial-card stagger">
+        <span class="v-ico">⏱️</span>
+        <h4>Límite de Velocidad</h4>
+        <div class="velocidad-badge">10 km/h</div>
+        <p>Velocidad máxima estricta dentro del predio de Organización La Paz.</p>
+      </div>
+      <div class="vial-card stagger">
+        <span class="v-ico">✅</span>
+        <h4>Cinturón Siempre</h4>
+        <p>Uso obligatorio para todos los ocupantes del vehículo en cualquier recorrido interno.</p>
+      </div>
+      <div class="vial-card stagger">
+        <span class="v-ico">🅿️</span>
+        <h4>Parqueo Seguro</h4>
+        <p>Estaciona en posición de salida (en reversa) únicamente en las zonas designadas.</p>
+      </div>
+    </div>
+
+    <div class="card stagger" style="border-left-color: var(--rojo); margin-top: 24px; background: #fef2f2;">
+      <h3 style="color: var(--rojo); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 1.5rem;">🚛</span> Vehículos Pesados y Combustibles
+      </h3>
+      <p style="font-size: 0.9rem; color: var(--texto-secondary); margin-bottom: 0;">Todo conductor de carrotanques o carga pesada debe acatar instrucciones para maniobras cerca a la planta. Deben mantener el motor apagado durante el descargue de Diésel/GLP (según protocolo), portar sistema arrestallamas si aplica, y <strong>permanecer atentos en su área designada</strong>. Ceda el paso a maniobras críticas de operación.</p>
+    </div>
+  </section>
+
+  <section id="checklist-section" data-title="Recomendaciones Finales" aria-label="Sección 16: Recomendaciones Finales">
+    <div class="mascota"><img src="https://i.postimg.cc/gcX7rNgd/Logo-PBI.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">16</span>Requisitos de Ingreso</h2>
+    <p class="stagger">Antes de ingresar a la planta, confirma tu compromiso con estas normativas críticas. <strong>Debes marcar todos los ítems para continuar.</strong></p>
+
+    <div class="checklist-count stagger" id="checkCount">0 de 6 completados</div>
+    <div class="checklist-progress stagger">
+      <div class="checklist-progress-bar" id="checkProgressBar" style="width:0%"></div>
+    </div>
+
+    <ul class="checklist-list" role="group" aria-label="Lista de verificación obligatoria">
+      <li id="cli-0" class="stagger"><label><input type="checkbox" class="check-item"><span>Entendí los riesgos operativos: eléctricos, combustibles (GLP/Diésel) y térmicos.</span></label></li>
+      <li id="cli-1" class="stagger"><label><input type="checkbox" class="check-item"><span>Porto mi EPP completo (botas, casco, gafas, protección auditiva para motores).</span></label></li>
+      <li id="cli-2" class="stagger"><label><input type="checkbox" class="check-item"><span>Sé ubicar la ruta de evacuación ante emergencias eléctricas o fugas de gas.</span></label></li>
+      <li id="cli-3" class="stagger"><label><input type="checkbox" class="check-item"><span>Mi ropa es 100% algodón antiestática para ingresar a zonas clasificadas Ex (GLP).</span></label></li>
+      <li id="cli-4" class="stagger"><label><input type="checkbox" class="check-item"><span>No usaré celular sin certificación intrínsecamente segura cerca a tanques de combustible.</span></label></li>
+      <li id="cli-5" class="stagger"><label><input type="checkbox" class="check-item"><span>Cumpliré las políticas corporativas de cero alcohol, cero drogas y cero humo.</span></label></li>
+    </ul>
+
+    <div id="mensaje-alerta" aria-live="assertive"></div>
+  </section>
+
+  <section data-title="Cierre y Cultura" aria-label="Sección 17: Cierre y Cultura">
+    <div class="cierre-hero">
+      <span class="cierre-trophy">🏆</span>
+      <h2 style="color: var(--azul-oscuro);">¡Inducción Completada!</h2>
+      <p>Gracias por comprometerte con la seguridad en PBI Generación. <strong>En La Paz, la energía más importante eres tú.</strong></p>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-card stagger">
+        <div class="v-ico">🎥</div>
+        <h4>Cultura de Seguridad Industrial</h4>
+        <p style="font-size:0.82rem; color: var(--texto-secondary); margin-bottom:8px;">Refuerza los conceptos aprendidos en planta</p>
+        <a href="https://youtu.be/faHop1FcGNE" target="_blank" rel="noopener">▶ Ver video →</a>
+      </div>
+      <div class="video-card stagger">
+        <div class="v-ico">🏢</div>
+        <h4>Quiénes Somos — PBI</h4>
+        <p style="font-size:0.82rem; color: var(--texto-secondary); margin-bottom:8px;">Conoce nuestro propósito como generadores de energía</p>
+        <a href="https://youtu.be/-gRjlWdwpao" target="_blank" rel="noopener">▶ Ver video →</a>
+      </div>
+    </div>
+
+    <div style="text-align: center; padding: 28px 0 10px;">
+      <p style="color: var(--texto-secondary); font-size:0.88rem; margin-bottom: 18px;">Haz clic para presentar la evaluación de conocimientos y validar tu ingreso:</p>
+      <a class="final-button" href="https://docs.google.com/forms/d/e/1FAIpQLSfAjJpeeycvWsdF_uxza6CA4-6IB9Wsny7-M6fHBr-SGm_9Eg/viewform?usp=publish-editor" target="_blank" rel="noopener">
+        ✅ Presentar Evaluación HSEQ
+      </a>
+    </div>
+  </section>
+
+  <div class="swipe-hint" id="swipeHint">👉 Desliza para navegar</div>
+  <nav class="nav-buttons" aria-label="Navegación entre secciones">
+    <button class="nav-btn nav-btn-prev" id="btnAnterior" aria-label="Ir a sección anterior">← Anterior</button>
+    <div class="nav-step-counter" id="stepCounter" aria-live="polite">Sección 1 de 17</div>
+    <button class="nav-btn" id="btnSiguiente" aria-label="Ir a siguiente sección">Siguiente →</button>
+  </nav>
+
+</main>
+
+<script>
+(function() {
+  'use strict';
+
+  // ======= STATE =======
+  let current = 0;
+  let direction = 'forward'; // 'forward' | 'backward'
+  const visited = new Set([0]);
+
+  // ======= DOM REFS =======
+  const sections = document.querySelectorAll('section');
+  const btnAnterior = document.getElementById('btnAnterior');
+  const btnSiguiente = document.getElementById('btnSiguiente');
+  const barraProgreso = document.getElementById('barraProgreso');
+  const progressPct = document.getElementById('progressPct');
+  const checklistSection = document.getElementById('checklist-section');
+  const headerBadge = document.getElementById('headerBadge');
+  const headerSectionName = document.getElementById('headerSectionName');
+  const stepCounter = document.getElementById('stepCounter');
+  const navDotsContainer = document.getElementById('navDots');
+  const liveAnnouncer = document.getElementById('liveAnnouncer');
+  const mainContainer = document.getElementById('mainContainer');
+  const swipeHint = document.getElementById('swipeHint');
+
+  // ======= AUDIO ENGINE (Web Audio API) =======
+  const AudioEngine = {
+    ctx: null,
+    enabled: true,
+
+    init() {
+      if (this.ctx) return;
+      try {
+        this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      } catch(e) {
+        this.enabled = false;
+      }
+    },
+
+    play(type) {
+      if (!this.enabled || !this.ctx) return;
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+
+      switch(type) {
+        case 'next': this._playTone([520, 680], 0.06, 'sine', 0.12); break;
+        case 'prev': this._playTone([480, 380], 0.05, 'sine', 0.1); break;
+        case 'check': this._playTone([600, 800], 0.04, 'sine', 0.08); break;
+        case 'complete': this._playChord([523, 659, 784, 1047], 0.08, 0.35); break;
+        case 'error': this._playTone([300, 200], 0.06, 'square', 0.15); break;
+        case 'open': this._playTone([440, 550], 0.03, 'sine', 0.06); break;
+      }
+    },
+
+    _playTone(freqs, vol, wave, dur) {
+      const now = this.ctx.currentTime;
+      const gain = this.ctx.createGain();
+      gain.connect(this.ctx.destination);
+      gain.gain.setValueAtTime(vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + dur);
+
+      freqs.forEach((f, i) => {
+        const osc = this.ctx.createOscillator();
+        osc.type = wave;
+        osc.frequency.setValueAtTime(f, now + i * dur * 0.4);
+        osc.connect(gain);
+        osc.start(now + i * dur * 0.35);
+        osc.stop(now + dur + 0.05);
+      });
+    },
+
+    _playChord(freqs, vol, dur) {
+      const now = this.ctx.currentTime;
+      freqs.forEach((f, i) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(f, now);
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(vol, now + 0.04 + i * 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + dur);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now + i * 0.04);
+        osc.stop(now + dur + 0.1);
+      });
+    }
+  };
+
+  document.addEventListener('click', () => AudioEngine.init(), { once: true });
+  document.addEventListener('touchstart', () => AudioEngine.init(), { once: true });
+
+  // ======= BUILD NAV DOTS =======
+  sections.forEach((sec, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    const title = sec.dataset.title || ('Sección ' + (i + 1));
+    dot.setAttribute('aria-label', title);
+    dot.title = title;
+    dot.onclick = () => goTo(i);
+    navDotsContainer.appendChild(dot);
+  });
+
+  // ======= GAME 1: AMBIENTAL (SECCIÓN 9) =======
+  const wasteItems = [
+    { text: "Botella de plástico limpia 🥤", bin: "blanco" },
+    { text: "Servilleta usada 🧻", bin: "negro" },
+    { text: "Cáscara de plátano 🍌", bin: "verde" },
+    { text: "Trapo con aceite de motor 🛢️", bin: "rojo" }
+  ];
+  let currentGameIndex = 0;
+
+  function initGame1() {
+    currentGameIndex = 0;
+    updateGame1UI();
+  }
+
+  function updateGame1UI() {
+    const itemEl = document.getElementById("game-item-text");
+    const binsEl = document.getElementById("game-bins");
+    const feedbackEl = document.getElementById("game-feedback");
+    
+    if (!itemEl) return;
+
+    if (currentGameIndex >= wasteItems.length) {
+      itemEl.innerHTML = "🎉 ¡Excelente! Eres un experto reciclando.";
+      itemEl.style.color = "var(--verde)";
+      binsEl.style.display = "none";
+      feedbackEl.textContent = "";
+      AudioEngine.play('complete');
+      return;
+    }
+    
+    itemEl.style.color = "var(--naranja)";
+    itemEl.textContent = wasteItems[currentGameIndex].text;
+    binsEl.style.display = "flex";
+    feedbackEl.textContent = "";
+  }
+
+  function checkBin(selectedBin) {
+    const correctBin = wasteItems[currentGameIndex].bin;
+    const feedbackEl = document.getElementById("game-feedback");
+    const itemEl = document.getElementById("game-item-text");
+
+    if (selectedBin === correctBin) {
+      feedbackEl.style.color = "var(--verde)";
+      feedbackEl.textContent = "¡Correcto! ✅";
+      AudioEngine.play('check');
+      
+      itemEl.style.transform = "scale(0.8)";
+      setTimeout(() => {
+        currentGameIndex++;
+        itemEl.style.transform = "scale(1)";
+        updateGame1UI();
+      }, 700);
+    } else {
+      feedbackEl.style.color = "var(--rojo)";
+      feedbackEl.textContent = "Ups, esa no es la caneca. Intenta de nuevo ❌";
+      AudioEngine.play('error');
+      
+      itemEl.style.animation = 'shake 0.4s';
+      setTimeout(() => itemEl.style.animation = '', 400);
+      if (navigator.vibrate) navigator.vibrate(200);
+    }
+  }
+
+  // Attach event listeners for Game 1 safely
+  document.querySelectorAll('[data-bin]').forEach(btn => {
+    btn.addEventListener('click', (e) => checkBin(e.target.dataset.bin));
+  });
+
+
+  // ======= GAME 2: PERMISOS DE TRABAJO (SECCIÓN 8) =======
+  const riskItems = [
+    { text: "Soldadura cerca a compresores 🔥", type: "permiso" },
+    { text: "Recorrido de inspección visual 👀", type: "rutina" },
+    { text: "Mantenimiento interno de tanque 🚧", type: "permiso" },
+    { text: "Ajuste menor a nivel de piso 🔧", type: "rutina" }
+  ];
+  let currentRiskIndex = 0;
+
+  function initGame2() {
+    currentRiskIndex = 0;
+    updateGame2UI();
+  }
+
+  function updateGame2UI() {
+    const itemEl = document.getElementById("game2-item-text");
+    const binsEl = document.getElementById("game2-bins");
+    const feedbackEl = document.getElementById("game2-feedback");
+    
+    if(!itemEl) return;
+
+    if (currentRiskIndex >= riskItems.length) {
+      itemEl.innerHTML = "🛡️ ¡Perfecto! Sabes identificar los trabajos críticos.";
+      itemEl.style.color = "var(--verde)";
+      binsEl.style.display = "none";
+      feedbackEl.textContent = "";
+      AudioEngine.play('complete');
+      return;
+    }
+    
+    itemEl.style.color = "var(--azul-oscuro)";
+    itemEl.textContent = riskItems[currentRiskIndex].text;
+    binsEl.style.display = "flex";
+    feedbackEl.textContent = "";
+  }
+
+  function checkRisk(selectedType) {
+    const correctType = riskItems[currentRiskIndex].type;
+    const feedbackEl = document.getElementById("game2-feedback");
+    const itemEl = document.getElementById("game2-item-text");
+
+    if (selectedType === correctType) {
+      feedbackEl.style.color = "var(--verde)";
+      feedbackEl.textContent = "¡Bien clasificado! ✅";
+      AudioEngine.play('check');
+      
+      itemEl.style.transform = "scale(0.8)";
+      setTimeout(() => {
+        currentRiskIndex++;
+        itemEl.style.transform = "scale(1)";
+        updateGame2UI();
+      }, 700);
+    } else {
+      feedbackEl.style.color = "var(--rojo)";
+      feedbackEl.textContent = "Cuidado. Revisa los conceptos ❌";
+      AudioEngine.play('error');
+      
+      itemEl.style.animation = 'shake 0.4s';
+      setTimeout(() => itemEl.style.animation = '', 400);
+      if (navigator.vibrate) navigator.vibrate(200);
+    }
+  }
+
+  // Attach event listeners for Game 2 safely
+  document.querySelectorAll('[data-risk]').forEach(btn => {
+    btn.addEventListener('click', (e) => checkRisk(e.target.dataset.risk));
+  });
+
+  // ======= CHECKLIST =======
+  function updateChecklist() {
+    const items = checklistSection.querySelectorAll('.check-item');
+    const total = items.length;
+    const done = Array.from(items).filter(cb => cb.checked).length;
+
+    const bar = document.getElementById('checkProgressBar');
+    const count = document.getElementById('checkCount');
+    if (bar) bar.style.width = (done / total * 100) + '%';
+    if (count) count.textContent = done + ' de ' + total + ' completados';
+
+    items.forEach((cb, idx) => {
+      const li = document.getElementById('cli-' + idx);
+      if (li) li.classList.toggle('checked-ok', cb.checked);
+    });
+
+    if (done === total) {
+      const areaMensaje = document.getElementById('mensaje-alerta');
+      if (areaMensaje) areaMensaje.innerHTML = '';
+    }
+  }
+
+  checklistSection.querySelectorAll('.check-item').forEach(cb => {
+    cb.addEventListener('change', () => {
+      AudioEngine.play('check');
+      updateChecklist();
+
+      const items = checklistSection.querySelectorAll('.check-item');
+      const done = Array.from(items).filter(c => c.checked).length;
+      if (done === items.length) {
+        setTimeout(() => AudioEngine.play('complete'), 200);
+      }
+    });
+  });
+
+  // ======= SECTION TRANSITION =======
+  function show(index) {
+    const oldSection = sections[current !== index ? current : -1];
+
+    sections.forEach((s, i) => {
+      if (i === index) {
+        s.classList.remove('exit-left', 'exit-right');
+        s.classList.add('active');
+        s.removeAttribute('hidden');
+      } else {
+        s.classList.remove('active', 'exit-left', 'exit-right');
+        s.setAttribute('hidden', '');
+      }
+    });
+
+    btnAnterior.style.visibility = index === 0 ? 'hidden' : 'visible';
+    btnSiguiente.style.display = index === sections.length - 1 ? 'none' : 'inline-flex';
+
+    // Progress bar
+    const pct = Math.round((index + 1) / sections.length * 100);
+    barraProgreso.style.width = pct + '%';
+    barraProgreso.setAttribute('aria-valuenow', pct);
+    progressPct.textContent = pct + '%';
+    progressPct.classList.add('visible');
+    clearTimeout(progressPct._timer);
+    progressPct._timer = setTimeout(() => progressPct.classList.remove('visible'), 1500);
+
+    // Header info
+    headerBadge.textContent = (index + 1) + ' / ' + sections.length;
+    headerSectionName.textContent = sections[index].dataset.title || '';
+    stepCounter.textContent = 'Sección ' + (index + 1) + ' de ' + sections.length;
+
+    // Nav dots
+    const dots = document.querySelectorAll('.nav-dot');
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === index);
+      d.classList.toggle('visited', visited.has(i) && i !== index);
+    });
+
+    visited.add(index);
+
+    const title = sections[index].dataset.title || ('Sección ' + (index + 1));
+    liveAnnouncer.textContent = 'Sección ' + (index + 1) + ' de ' + sections.length + ': ' + title;
+
+    sections[index].setAttribute('tabindex', '-1');
+    setTimeout(() => sections[index].focus({ preventScroll: true }), 100);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (swipeHint && index > 0) swipeHint.style.display = 'none';
+
+    // Inicializar juegos dinámicamente si entran a la sección respectiva
+    if (index === 7) initGame2(); // Sección 8: Tareas Alto Riesgo
+    if (index === 8) initGame1(); // Sección 9: Gestión Ambiental
+  }
+
+  function goTo(index) {
+    if (index === current) return;
+    
+    // Checklist gate block
+    if (current === Array.from(sections).indexOf(checklistSection) && index > current) {
+      const checkboxes = checklistSection.querySelectorAll('.check-item');
+      const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+      if (!allChecked) {
+        AudioEngine.play('error');
+        const areaMensaje = document.getElementById('mensaje-alerta');
+        if (!areaMensaje.querySelector('.advertencia-checklist')) {
+          areaMensaje.innerHTML = "<div class='advertencia-checklist'>⚠️ Debes completar el checklist antes de acceder a la sección final.</div>";
+        }
+        return;
+      }
+    }
+
+    direction = index > current ? 'forward' : 'backward';
+    AudioEngine.play(direction === 'forward' ? 'next' : 'prev');
+    current = index;
+    show(current);
+  }
+
+  function nextSection() {
+    if (sections[current] === checklistSection) {
+      const checkboxes = checklistSection.querySelectorAll('.check-item');
+      const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+      const areaMensaje = document.getElementById('mensaje-alerta');
+
+      if (!allChecked) {
+        AudioEngine.play('error');
+        if (!areaMensaje.querySelector('.advertencia-checklist')) {
+          areaMensaje.innerHTML = "<div class='advertencia-checklist'>⚠️ Por favor marca todos los ítems antes de continuar.</div>";
+        }
+        return;
+      } else {
+        areaMensaje.innerHTML = '';
+      }
+    }
+
+    if (current < sections.length - 1) {
+      direction = 'forward';
+      AudioEngine.play('next');
+      current++;
+      show(current);
+    }
+  }
+
+  function prevSection() {
+    if (current > 0) {
+      direction = 'backward';
+      AudioEngine.play('prev');
+      current--;
+      show(current);
+    }
+  }
+
+  btnSiguiente.addEventListener('click', nextSection);
+  btnAnterior.addEventListener('click', prevSection);
+
+  // ======= KEYBOARD NAV =======
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); nextSection(); }
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); prevSection(); }
+  });
+
+  // ======= SWIPE SUPPORT =======
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartTime = 0;
+
+  mainContainer.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+    touchStartTime = Date.now();
+  }, { passive: true });
+
+  mainContainer.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    const dt = Date.now() - touchStartTime;
+
+    if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 50 && dt < 500) {
+      if (dx < 0) nextSection();
+      else        prevSection();
+    }
+  }, { passive: true });
+
+  // ======= ACCORDION SOUND =======
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {
+      if (d.open) AudioEngine.play('open');
+    });
+  });
+
+  // ======= INIT =======
+  show(0);
+  updateChecklist();
+
+  sections.forEach((s, i) => {
+    if (i !== 0) s.setAttribute('hidden', '');
+  });
+
+})();
+</script>
+
+</body>
+</html>

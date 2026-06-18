@@ -1063,6 +1063,98 @@
       transition-duration: 0.01ms !important;
     }
   }
+  /* ═══ SISTEMA DE ICONOS VECTORIALES (piloto) ═══ */
+  .lc-icon {
+    width: 18px; height: 18px;
+    stroke-width: 1.8;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+  /* Icono dentro de summary del acordeón */
+  .summary-ico {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 34px; height: 34px;
+    border-radius: var(--radio);
+    flex-shrink: 0;
+    margin-right: 2px;
+  }
+  .summary-ico .lc-icon { width: 19px; height: 19px; }
+  .si-alto  { background: #fef2f2; color: #dc2626; }
+  .si-medio { background: #fffbeb; color: #b45309; }
+
+  /* Reestructura del summary para alinear icono + texto + tag */
+  details summary.summary-flex {
+    display: flex; align-items: center; gap: 12px;
+  }
+  details summary.summary-flex .summary-text {
+    flex: 1;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.9rem;
+  }
+  /* Icono de check en medida preventiva */
+  .prev-ico {
+    display: inline-flex; vertical-align: -3px; margin-right: 5px;
+    color: #16a34a;
+  }
+  .prev-ico .lc-icon { width: 16px; height: 16px; }
+
+
+  /* ═══ ICONOS — contextos adicionales ═══ */
+  /* Icono en H4 de sección (títulos internos) */
+  .h4-ico {
+    display: inline-flex; vertical-align: -4px; margin-right: 7px;
+    color: var(--azul-medio);
+  }
+  .h4-ico .lc-icon { width: 19px; height: 19px; stroke-width: 1.9; }
+  .h4-ico.ico-naranja { color: var(--naranja); }
+  .h4-ico.ico-rojo    { color: var(--rojo); }
+  .h4-ico.ico-verde   { color: var(--verde); }
+
+  /* Icono en summary de acordeón (políticas, tareas alto riesgo) */
+  .summary-flex .summary-ico.si-azul    { background: #eff6ff; color: var(--azul-medio); }
+  .summary-flex .summary-ico.si-naranja { background: #fff7ed; color: #c2410c; }
+  .summary-flex .summary-ico.si-verde   { background: #f0fdf4; color: #166534; }
+  .summary-flex .summary-ico.si-morado  { background: #f5f3ff; color: #6d28d9; }
+
+  /* Icono dentro de card-icon (reemplaza emoji grande) */
+  .card-icon .lc-icon { width: 20px; height: 20px; stroke-width: 1.9; }
+
+  /* Icono en banner de emergencia */
+  .e-ico-svg { display: inline-flex; flex-shrink: 0; }
+  .e-ico-svg .lc-icon { width: 30px; height: 30px; stroke-width: 1.7; color: currentColor; }
+
+  /* Icono en tarjetas tipo norma / vial (centrados, grandes) */
+  .card-ico-lg {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px; border-radius: var(--radio);
+    margin: 0 auto 8px; background: var(--surface-2);
+    color: var(--azul-medio);
+  }
+  .card-ico-lg .lc-icon { width: 22px; height: 22px; stroke-width: 1.8; }
+
+  /* Icono en directorio de emergencias */
+  .dir-ico-svg {
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 4px;
+  }
+  .dir-ico-svg .lc-icon { width: 22px; height: 22px; stroke-width: 1.8; }
+
+  /* Icono inline en párrafos/labels (texto + icono) */
+  .inline-ico {
+    display: inline-flex; vertical-align: -3px; margin-right: 5px;
+    color: var(--azul-medio);
+  }
+  .inline-ico .lc-icon { width: 16px; height: 16px; stroke-width: 1.9; }
+
+  /* Icono en enlace de documentos (PDF) */
+  .link-ico { display: inline-flex; vertical-align: -2px; margin-right: 4px; }
+  .link-ico .lc-icon { width: 14px; height: 14px; }
+
+  /* Icono check/x en bloques de recordatorio */
+  .block-ico { display: inline-flex; vertical-align: -3px; margin-right: 6px; }
+  .block-ico .lc-icon { width: 17px; height: 17px; stroke-width: 2; }
+
   </style>
 </head>
 <body>
@@ -1100,18 +1192,18 @@
       <p class="subtitle">San Carlos de Guaroa, Meta · Inducción HSEQ</p>
 
       <div class="perfil-badges stagger">
-        <span class="perfil-badge pb-pbi">👷 Trabajador PBI</span>
-        <span class="perfil-badge pb-contratista">🔧 Contratista</span>
-        <span class="perfil-badge pb-visitante">🪪 Visitante</span>
+        <span class="perfil-badge pb-pbi"><span class="inline-ico" style="color:var(--azul-medio)"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Trabajador PBI</span>
+        <span class="perfil-badge pb-contratista"><span class="inline-ico" style="color:#b45309"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>Contratista</span>
+        <span class="perfil-badge pb-visitante"><span class="inline-ico" style="color:#166534"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span>Visitante</span>
       </div>
 
       <div class="intro-obligatorio stagger">
-        <span class="ico">📌</span>
+        <span class="ico" style="color:var(--naranja); display:inline-flex"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span>
         <p>Esta inducción es <strong>obligatoria para toda persona</strong> que ingrese a nuestras instalaciones — ya seas trabajador directo de PBI, contratista o visitante. Su aprobación es requisito previo para cualquier ingreso o actividad. Al finalizar deberás completar la evaluación.</p>
       </div>
 
       <div class="welcome-footer stagger">
-        🌱 Diseñada para que actúes de forma <strong>segura</strong>, <strong>responsable</strong> y coherente con nuestra cultura HSEQ, sin importar tu vínculo con la empresa.
+        <span class="inline-ico" style="color:#166534"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></span>Diseñada para que actúes de forma <strong>segura</strong>, <strong>responsable</strong> y coherente con nuestra cultura HSEQ, sin importar tu vínculo con la empresa.
       </div>
     </div>
   </section>
@@ -1128,7 +1220,7 @@
       <iframe src="https://streamable.com/e/uq5idk?" allowfullscreen title="Video introductorio de la inducción HSEQ" loading="lazy"></iframe>
     </div>
 
-    <p class="stagger" style="font-weight:600; margin-bottom:10px;">🏭 Conoce la Organización La Paz — nuestro cliente y socio estratégico:</p>
+    <p class="stagger" style="font-weight:600; margin-bottom:10px;"><span class="inline-ico" style="color:var(--azul-medio)"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></span>Conoce la Organización La Paz — nuestro cliente y socio estratégico:</p>
     <a href="https://drive.google.com/file/d/1ffKl48ynC2pqLzgMrO0i3swo3tbIe-3M/view" target="_blank" rel="noopener" class="stagger" style="text-decoration:none; border:none; display:block; margin-bottom:20px;">
       <div style="
         background: var(--azul-oscuro);
@@ -1165,7 +1257,7 @@
     </a>
 
     <!-- FOTOS PLANTA — reemplaza las URLs cuando las tengas en postimg.cc -->
-    <p class="stagger" style="font-weight:600; margin-bottom:10px;">📸 Así es la Planta Generación La Paz:</p>
+    <p class="stagger" style="font-weight:600; margin-bottom:10px;"><span class="inline-ico" style="color:var(--azul-medio)"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>Así es la Planta Generación La Paz:</p>
     <div class="foto-grid stagger">
       <!--
         INSTRUCCIÓN: Sube las fotos a postimg.cc y reemplaza el src de cada imagen.
@@ -1193,7 +1285,7 @@
     </div>
 
     <div class="card stagger" style="border-left-color: var(--azul-medio);">
-      <h4>🎯 Propósito</h4>
+      <h4><span class="h4-ico ico-naranja"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>Propósito</h4>
       <p style="margin:0;">Brindar a todo trabajador, contratista o visitante las herramientas y conocimientos esenciales en materia de <strong>Seguridad, Salud, Ambiente y Calidad (HSEQ)</strong>, garantizando la integridad de las personas, el entorno y la continuidad de nuestras operaciones de generación eléctrica.</p>
     </div>
   </section>
@@ -1207,21 +1299,21 @@
     <p class="stagger">Estas políticas rigen el actuar de <strong>todos en PBI</strong> — trabajadores directos, contratistas y visitantes. Haz clic en cada una para conocer su alcance:</p>
 
     <details class="stagger">
-      <summary>📌 Política Integral HSEQ</summary>
+      <summary class="summary-flex"><span class="summary-ico si-azul"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span><span class="summary-text">Política Integral HSEQ</span></summary>
       <p>Establece nuestro compromiso con la protección de la vida, la salud, el ambiente y la calidad en todos los procesos, sin distinción del tipo de vinculación.</p>
-      <p><a href="https://drive.google.com/open?id=1To8ksi0_bzYq_hzyExQr8FiCRMw2FOy4" target="_blank" rel="noopener">📄 Ver documento PDF completo →</a></p>
+      <p><a href="https://drive.google.com/open?id=1To8ksi0_bzYq_hzyExQr8FiCRMw2FOy4" target="_blank" rel="noopener"><span class="link-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>Ver documento PDF completo →</a></p>
     </details>
 
     <details class="stagger">
-      <summary>🚫 Política de Prevención SPA</summary>
+      <summary class="summary-flex"><span class="summary-ico si-rojo"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></span><span class="summary-text">Política de Prevención SPA</span></summary>
       <p>Fomenta ambientes seguros y saludables, orientada a reducir los riesgos asociados al uso de sustancias psicoactivas. Aplica a todo el personal sin excepción. <strong>Cero alcohol · Cero drogas.</strong></p>
-      <p><a href="https://drive.google.com/open?id=19_eRtxWZ1DvwmY0pnxqImaBqKB7KbdRr" target="_blank" rel="noopener">📄 Ver documento PDF completo →</a></p>
+      <p><a href="https://drive.google.com/open?id=19_eRtxWZ1DvwmY0pnxqImaBqKB7KbdRr" target="_blank" rel="noopener"><span class="link-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>Ver documento PDF completo →</a></p>
     </details>
 
     <details class="stagger">
-      <summary>🚗 Política de Seguridad Vial</summary>
+      <summary class="summary-flex"><span class="summary-ico si-azul"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span><span class="summary-text">Política de Seguridad Vial</span></summary>
       <p>Promueve una cultura de movilidad segura dentro y fuera de nuestras instalaciones para todas las personas — operadores, técnicos y visitantes por igual.</p>
-      <p><a href="https://drive.google.com/open?id=1NAmg1SaRJ_Rzt3DeqWVO9znXfWT3OZOA" target="_blank" rel="noopener">📄 Ver documento PDF completo →</a></p>
+      <p><a href="https://drive.google.com/open?id=1NAmg1SaRJ_Rzt3DeqWVO9znXfWT3OZOA" target="_blank" rel="noopener"><span class="link-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>Ver documento PDF completo →</a></p>
     </details>
   </section>
 
@@ -1234,33 +1326,58 @@
     <p class="stagger">Durante tu permanencia en la planta podrías estar expuesto a los siguientes peligros. Despliega cada uno para conocer la medida preventiva:</p>
 
     <details class="stagger">
-      <summary>⚡ Riesgo Eléctrico <span class="risk-tag">ALTO</span></summary>
+      <summary class="summary-flex">
+        <span class="summary-ico si-alto">
+          <svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </span>
+        <span class="summary-text">Riesgo Eléctrico <span class="risk-tag">ALTO</span></span>
+      </summary>
       <p>Presencia de subestación eléctrica, generadores a GLP y tableros energizados. Representan peligro crítico de electrocución o arco eléctrico.</p>
-      <span class="risk-preventiva">✅ No toques ni te acerques a equipos eléctricos, celdas o subestaciones sin autorización expresa y entrenamiento previo.</span>
+      <span class="risk-preventiva"><span class="prev-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>No toques ni te acerques a equipos eléctricos, celdas o subestaciones sin autorización expresa y entrenamiento previo.</span>
     </details>
 
     <details class="stagger">
-      <summary>🔥 Riesgo de Incendio y Explosión <span class="risk-tag">ALTO</span></summary>
+      <summary class="summary-flex">
+        <span class="summary-ico si-alto">
+          <svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+        </span>
+        <span class="summary-text">Riesgo de Incendio y Explosión <span class="risk-tag">ALTO</span></span>
+      </summary>
       <p>Operamos con tanques de GLP, tanques de Diésel (ACPM) y sistemas con atmósferas que pueden ser explosivas (ATEX).</p>
-      <span class="risk-preventiva">✅ Prohibido generar fuentes de ignición. Usa ropa antiestática (100% algodón) en áreas clasificadas y respeta las restricciones de equipos electrónicos.</span>
+      <span class="risk-preventiva"><span class="prev-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Prohibido generar fuentes de ignición. Usa ropa antiestática (100% algodón) en áreas clasificadas y respeta las restricciones de equipos electrónicos.</span>
     </details>
 
     <details class="stagger">
-      <summary>⚙️ Riesgos Mecánicos y Ruido <span class="risk-tag">ALTO</span></summary>
+      <summary class="summary-flex">
+        <span class="summary-ico si-alto">
+          <svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/></svg>
+        </span>
+        <span class="summary-text">Riesgos Mecánicos y Ruido <span class="risk-tag">ALTO</span></span>
+      </summary>
       <p>Equipos rotativos, motores CAT a GLP en operación continua, herramientas y altos niveles de presión sonora.</p>
-      <span class="risk-preventiva">✅ Mantente fuera del alcance de partes móviles, respeta guardas de seguridad y usa protección auditiva obligatoria en zonas de motores.</span>
+      <span class="risk-preventiva"><span class="prev-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Mantente fuera del alcance de partes móviles, respeta guardas de seguridad y usa protección auditiva obligatoria en zonas de motores.</span>
     </details>
 
     <details class="stagger">
-      <summary>🐍 Riesgo Biológico <span class="risk-tag" style="background:#fffbeb;color:#d97706;">MEDIO</span></summary>
+      <summary class="summary-flex">
+        <span class="summary-ico si-medio">
+          <svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2.5 21.5 1.4-1.4"/><path d="M19.8 4.2a4.7 4.7 0 0 0-6.6 0c-2 2-2 5 0 7 .5.5.5 1.3 0 1.8l-1.4 1.4c-.5.5-1.3.5-1.8 0-2-2-5-2-7 0a4.7 4.7 0 0 0 0 6.6"/><path d="M9 13a5 5 0 0 0 7-7"/></svg>
+        </span>
+        <span class="summary-text">Riesgo Biológico <span class="risk-tag" style="background:#fffbeb;color:#b45309;">MEDIO</span></span>
+      </summary>
       <p>Por nuestra ubicación geográfica en el Meta, existe exposición a ofidios (serpientes), picaduras de insectos y otros animales propios de la región.</p>
-      <span class="risk-preventiva">✅ Camina solo por senderos y áreas demarcadas. Usa botas de seguridad y reporta de inmediato cualquier avistamiento animal.</span>
+      <span class="risk-preventiva"><span class="prev-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Camina solo por senderos y áreas demarcadas. Usa botas de seguridad y reporta de inmediato cualquier avistamiento animal.</span>
     </details>
 
     <details class="stagger">
-      <summary>☀️ Riesgo por Estrés Térmico <span class="risk-tag" style="background:#fffbeb;color:#d97706;">MEDIO</span></summary>
+      <summary class="summary-flex">
+        <span class="summary-ico si-medio">
+          <svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        </span>
+        <span class="summary-text">Riesgo por Estrés Térmico <span class="risk-tag" style="background:#fffbeb;color:#b45309;">MEDIO</span></span>
+      </summary>
       <p>Las altas temperaturas ambientales de San Carlos de Guaroa sumadas a la radiación térmica de los motores pueden generar golpe de calor o deshidratación rápida.</p>
-      <span class="risk-preventiva">✅ Mantén una hidratación constante, utiliza bloqueador solar y realiza pausas en zonas de sombra o ventiladas cuando sea necesario.</span>
+      <span class="risk-preventiva"><span class="prev-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Mantén una hidratación constante, utiliza bloqueador solar y realiza pausas en zonas de sombra o ventiladas cuando sea necesario.</span>
     </details>
   </section>
 
@@ -1374,7 +1491,7 @@
     <h2><span class="section-number">6</span>Permisos de Trabajo (INS-HSEQ-01)</h2>
     <p class="stagger">El Sistema de Permisos de Trabajo (SPT) previene accidentes y controla riesgos. Se requiere un permiso cuando un equipo o persona ingresa al área de otro, o cuando se intervienen equipos e instalaciones. La herramienta base para <strong>toda tarea</strong> es el <strong>AST (Análisis de Seguridad del Trabajo)</strong>, elaborado en conjunto antes de iniciar.</p>
 
-    <h4 class="stagger" style="margin-top: 20px;">🔄 Flujo del Permiso de Trabajo</h4>
+    <h4 class="stagger" style="margin-top: 20px;"><span class="h4-ico ico-naranja"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg></span>Flujo del Permiso de Trabajo</h4>
     <div class="proceso-steps stagger">
       <div class="paso-item">
         <div class="paso-num">1</div>
@@ -1406,32 +1523,32 @@
       </div>
     </div>
 
-    <h4 class="stagger" style="margin-top: 20px;">👥 Roles y Equivalencia para Contratistas</h4>
+    <h4 class="stagger" style="margin-top: 20px;"><span class="h4-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Roles y Equivalencia para Contratistas</h4>
     <div class="grid-2 stagger">
       <div class="card">
-        <div class="card-icon" style="background:#fef2f2; color:#dc2626;">🛠️</div>
+        <div class="card-icon" style="background:#fef2f2; color:#dc2626;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h4>El Ejecutante (AE)</h4>
         <p style="font-size:0.85rem; color:var(--texto-secondary);">Equivalente al <strong>Jefe de Cuadrilla o Líder Técnico</strong>. Ejecuta el trabajo, garantiza el cumplimiento del permiso y lidera al grupo.</p>
       </div>
       <div class="card">
-        <div class="card-icon" style="background:#fffbeb; color:#d97706;">📍</div>
+        <div class="card-icon" style="background:#fffbeb; color:#d97706;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <h4>Autoridad Local (AAL)</h4>
         <p style="font-size:0.85rem; color:var(--texto-secondary);">Equivalente al <strong>Supervisor de Campo</strong>. Entrega el sitio, valida condiciones y lidera la charla de inicio.</p>
       </div>
       <div class="card">
-        <div class="card-icon" style="background:#f0fdf4; color:#16a34a;">✍️</div>
+        <div class="card-icon" style="background:#f0fdf4; color:#16a34a;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg></div>
         <h4>Autoridad de Área (AA)</h4>
         <p style="font-size:0.85rem; color:var(--texto-secondary);">Equivalente al <strong>Supervisor del Contratista / Cliente</strong>. Tiene control operativo global, aprueba y firma los permisos.</p>
       </div>
       <div class="card">
-        <div class="card-icon" style="background:#f5f3ff; color:#7c3aed;">🔐</div>
+        <div class="card-icon" style="background:#f5f3ff; color:#7c3aed;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
         <h4>Autoridad Aislante (AI)</h4>
         <p style="font-size:0.85rem; color:var(--texto-secondary);"><strong>Especialista Técnico</strong>. Ejecuta y documenta los aislamientos físicos (LOTO).</p>
       </div>
     </div>
 
     <div class="card stagger" style="border-left-color: var(--naranja); margin-top: 14px;">
-      <h4 style="color: var(--naranja);">⏳ Vigencias, Pausas y Suspensión</h4>
+      <h4 style="color: var(--naranja);"><span class="h4-ico ico-naranja"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>Vigencias, Pausas y Suspensión</h4>
       <ul style="font-size: 0.88rem; color: var(--texto-secondary);">
         <li><strong>Trabajos en Frío y Eléctricos:</strong> Vigencia de hasta 7 turnos de 12 horas.</li>
         <li><strong>Trabajos en Caliente:</strong> Vigencia máxima de 24 horas (2 turnos).</li>
@@ -1450,7 +1567,7 @@
     <h2><span class="section-number">7</span>Riesgos Específicos: Generación Eléctrica a GLP y Diésel</h2>
 
     <div class="emergency-banner stagger" style="background: #b91c1c;">
-      <span class="e-ico">⚠️</span>
+      <span class="e-ico e-ico-svg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span>
       <div class="e-text">
         <strong>Contexto de alto riesgo</strong>
         Te encuentras en una planta de generación. Existe manipulación de grandes volúmenes de combustible (GLP y Diésel) y energía eléctrica de alta tensión.
@@ -1459,25 +1576,25 @@
 
     <div class="grid-2">
       <div class="card stagger" style="border-left-color: #7c3aed;">
-        <div class="card-icon" style="background:#f5f3ff; font-size:1.4rem;">🔊</div>
+        <div class="card-icon" style="background:#f5f3ff; color:#6d28d9;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></div>
         <h4>Ruido Industrial (Motores CAT)</h4>
         <p style="font-size:0.88rem;">El funcionamiento de los generadores y motores a GLP producen altos decibeles de manera constante.</p>
         <span class="risk-preventiva">Uso permanente de protección auditiva de inserción y/o copa cerca a los generadores.</span>
       </div>
       <div class="card stagger" style="border-left-color: #2563eb;">
-        <div class="card-icon" style="background:#eff6ff; font-size:1.4rem;">⚡</div>
+        <div class="card-icon" style="background:#eff6ff; color:#2563eb;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <h4>Arco Eléctrico y Alta Tensión</h4>
         <p style="font-size:0.88rem;">Subestación, celdas y cuartos de control manejan energías capaces de producir accidentes fatales.</p>
         <span class="risk-preventiva">Distancia obligatoria a zonas delimitadas. Prohibida la intervención sin LOTO y competencias.</span>
       </div>
       <div class="card stagger" style="border-left-color: var(--rojo);">
-        <div class="card-icon" style="background:#fef2f2; font-size:1.4rem;">🔥</div>
+        <div class="card-icon" style="background:#fef2f2; color:#dc2626;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
         <h4>Atmósferas Explosivas (GLP)</h4>
         <p style="font-size:0.88rem;">Las zonas de tanques de GLP e isletas de válvulas tienen alta probabilidad de mezcla inflamable.</p>
         <span class="risk-preventiva">Herramientas antichispa, ropa 100% algodón antiestática y restricción estricta de celulares.</span>
       </div>
       <div class="card stagger" style="border-left-color: var(--naranja);">
-        <div class="card-icon" style="background:#fffbeb; font-size:1.4rem;">🌡️</div>
+        <div class="card-icon" style="background:#fffbeb; color:#d97706;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg></div>
         <h4>Superficies Calientes</h4>
         <p style="font-size:0.88rem;">Líneas de escape, turbos y bloques de los motores CAT alcanzan temperaturas críticas durante su operación.</p>
         <span class="risk-preventiva">Evita el contacto directo con motores y tuberías. Respeta las barreras térmicas.</span>
@@ -1494,27 +1611,27 @@
     <p class="stagger">Estas tareas requieren controles rigurosos, personal competente y <strong>Certificados de Apoyo al Permiso de Trabajo</strong> vigentes antes del inicio. Aplica para trabajadores propios y contratistas por igual:</p>
 
     <details class="risk-details stagger">
-      <summary>🧗 Trabajo en Alturas <span class="risk-tag">PERMISO ESPECIAL</span></summary>
+      <summary class="summary-flex"><span class="summary-ico si-alto"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m18 10-2 4M6 4l4 16M14 4l-2 4"/><circle cx="9" cy="4" r="2"/></svg></span><span class="summary-text">Trabajo en Alturas <span class="risk-tag">PERMISO ESPECIAL</span></span></summary>
       <p>Aplica para tareas desde <strong>2 metros</strong> de altura. Requiere certificación de trabajo en alturas vigente, arnés homologado, líneas de vida certificadas y Certificado de Apoyo aprobado.</p>
     </details>
 
     <details class="risk-details stagger">
-      <summary>🚧 Espacios Confinados <span class="risk-tag">PERMISO ESPECIAL</span></summary>
+      <summary class="summary-flex"><span class="summary-ico si-alto"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span><span class="summary-text">Espacios Confinados <span class="risk-tag">PERMISO ESPECIAL</span></span></summary>
       <p>Tanques de almacenamiento o trincheras. Requiere medición de gases (O₂, CO, H₂S, LEL), ventilación mecánica, vigía externo, plan de rescate activado y Certificado de Apoyo.</p>
     </details>
 
     <details class="risk-details stagger">
-      <summary>🔥 Trabajos en Caliente <span class="risk-tag">PERMISO ESPECIAL</span></summary>
+      <summary class="summary-flex"><span class="summary-ico si-alto"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span><span class="summary-text">Trabajos en Caliente <span class="risk-tag">PERMISO ESPECIAL</span></span></summary>
       <p>Soldadura, oxicorte, esmerilado cerca de motores o tanques de combustible. Requiere monitoreo continuo de atmósferas explosivas, extintores listos y eliminación de materiales inflamables.</p>
     </details>
 
     <details class="risk-details stagger">
-      <summary>🏗️ Izaje de Cargas <span class="risk-tag">PERMISO ESPECIAL</span></summary>
+      <summary class="summary-flex"><span class="summary-ico si-alto"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20v-6h4v6"/><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/></svg></span><span class="summary-text">Izaje de Cargas <span class="risk-tag">PERMISO ESPECIAL</span></span></summary>
       <p>Levantamiento de motores o repuestos pesados. Requiere plan de izaje, equipos y accesorios certificados, y área completamente delimitada.</p>
     </details>
 
     <details class="risk-details stagger">
-      <summary>⚡ Energías Peligrosas – LOTO <span class="risk-tag">PERMISO ESPECIAL</span></summary>
+      <summary class="summary-flex"><span class="summary-ico si-alto"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><span class="summary-text">Energías Peligrosas – LOTO <span class="risk-tag">PERMISO ESPECIAL</span></span></summary>
       <p>Intervención en tableros eléctricos, subestación o líneas de GLP/ACPM. Requiere bloqueo físico con candado personal, etiquetado y Certificado de Aislamiento firmado.</p>
     </details>
 
@@ -1563,7 +1680,7 @@
     </h3>
 
     <div class="alerta-extintor stagger" style="background:#fef2f2; color:#b91c1c; border-color:#fecaca; border-left-color:var(--rojo);">
-      <span style="font-size: 1.6rem;">⚠️</span>
+      <span class="e-ico-svg" style="color:#b91c1c"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span>
       <div>
         <strong style="display: block; font-family: var(--font-display); font-size: 1rem;">Los derrames ocurren en segundos</strong>
         <span style="font-size: 0.85rem;">Una manguera defectuosa o válvula mal cerrada en un trasiego de ACPM puede contaminar suelo y agua. <strong>Todo derrame, por menor que parezca, debe reportarse de inmediato.</strong></span>
@@ -1571,7 +1688,7 @@
     </div>
 
     <!-- Foto Kit Ambiental real -->
-    <p class="stagger" style="font-weight:600; margin-bottom:10px;">🧰 Nuestro Kit Ambiental en campo:</p>
+    <p class="stagger" style="font-weight:600; margin-bottom:10px;"><span class="inline-ico" style="color:var(--verde)"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.5 4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>Nuestro Kit Ambiental en campo:</p>
     <div class="imagen-seccion stagger">
       <img
         src="https://i.postimg.cc/C186cQg2/Foto-Kit-Ambiental.jpg"
@@ -1582,7 +1699,7 @@
 
     <div class="grid-2 stagger">
       <div class="card" style="border-left-color:#ea580c; padding: 16px;">
-        <h4 style="color: #ea580c;">🛢️ Antes del Trasiego</h4>
+        <h4 style="color: #ea580c;"><span class="h4-ico ico-naranja"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="15" y1="22" y2="22"/><line x1="4" x2="14" y1="9" y2="9"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg></span>Antes del Trasiego</h4>
         <ul style="margin:0; font-size:0.85rem; color: var(--texto-secondary);">
           <li>Inspecciona mangueras, conexiones y acoples.</li>
           <li>Verifica que existan bandejas de contención.</li>
@@ -1592,7 +1709,7 @@
         </ul>
       </div>
       <div class="card" style="border-left-color: var(--verde); padding: 16px;">
-        <h4 style="color: var(--verde);">📦 Contenido del Kit</h4>
+        <h4 style="color: var(--verde);"><span class="h4-ico ico-verde"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.5 4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>Contenido del Kit</h4>
         <ul style="margin:0; font-size:0.85rem; color: var(--texto-secondary);">
           <li>Material absorbente particulado.</li>
           <li>Salchichas / Barreras de contención.</li>
@@ -1603,7 +1720,7 @@
     </div>
 
     <div class="card stagger" style="border-left-color: var(--rojo); background:#fffdfa; margin-top: 10px;">
-      <h4 style="color: var(--rojo); margin-bottom: 16px;">🚨 Respuesta Inicial (Paso a Paso)</h4>
+      <h4 style="color: var(--rojo); margin-bottom: 16px;"><span class="h4-ico ico-rojo"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18v-6a5 5 0 1 1 10 0v6"/><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1z"/><path d="M21 12h1"/><path d="M18.5 4.5 18 5"/><path d="M2 12h1"/><path d="M12 2v1"/><path d="m4.929 4.929.707.707"/><path d="M12 12v6"/></svg></span>Respuesta Inicial (Paso a Paso)</h4>
       <div class="proceso-steps" style="margin-bottom: 0;">
         <div class="paso-item">
           <div class="paso-num" style="background: var(--rojo);">1</div>
@@ -1625,7 +1742,7 @@
     </div>
 
     <div class="emergency-banner stagger" style="background: #15803d; margin-top: 20px; margin-bottom: 0;">
-      <span class="e-ico">🌱</span>
+      <span class="e-ico e-ico-svg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></span>
       <div class="e-text">
         <strong>Protegemos la operación y el ambiente.</strong>
         Un litro de combustible puede generar impactos severos. La prevención, la detección temprana y la respuesta oportuna son responsabilidad de todos.
@@ -1641,7 +1758,7 @@
     <h2><span class="section-number">10</span>Protocolo de Emergencias</h2>
 
     <div class="emergency-banner stagger">
-      <span class="e-ico">🚨</span>
+      <span class="e-ico e-ico-svg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18v-6a5 5 0 1 1 10 0v6"/><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1z"/><path d="M21 12h1"/><path d="M18.5 4.5 18 5"/><path d="M2 12h1"/><path d="M12 2v1"/><path d="m4.929 4.929.707.707"/><path d="M12 12v6"/></svg></span>
       <div class="e-text">
         <strong>Atención Crítica: Planta de Generación Eléctrica</strong>
         Manejamos GLP, Diésel y subestación eléctrica. Ante una contingencia, el comportamiento rápido y disciplinado salva vidas.
@@ -1659,55 +1776,55 @@
     </ol>
 
     <!-- DIRECTORIO DE EMERGENCIAS reorganizado por prioridad -->
-    <h4 class="stagger" style="margin-top: 24px; margin-bottom: 8px; font-size: 1rem;">📞 Directorio de Emergencias</h4>
+    <h4 class="stagger" style="margin-top: 24px; margin-bottom: 8px; font-size: 1rem;"><span class="h4-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>Directorio de Emergencias</h4>
 
     <!-- Bloque 1: Líneas nacionales -->
-    <p class="stagger" style="font-size:0.75rem; font-weight:700; font-family:var(--font-display); color:var(--texto-secondary); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">🇨🇴 Líneas Nacionales</p>
+    <p class="stagger" style="font-size:0.75rem; font-weight:700; font-family:var(--font-display); color:var(--texto-secondary); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;"><span class="inline-ico" style="color:var(--texto-secondary)"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>Líneas Nacionales</p>
     <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;" class="stagger">
       <div style="flex:1 1 120px; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:12px; text-align:center;">
-        <div style="font-size:1.4rem;">🏥</div>
+        <div class="dir-ico-svg" style="color:#dc2626;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"/></svg></div>
         <div style="font-family:var(--font-display); font-size:0.72rem; font-weight:600; color:#64748b; margin:3px 0;">Cruz Roja</div>
         <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#dc2626;">132</div>
       </div>
       <div style="flex:1 1 120px; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:12px; text-align:center;">
-        <div style="font-size:1.4rem;">🛡️</div>
+        <div class="dir-ico-svg" style="color:#dc2626;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
         <div style="font-family:var(--font-display); font-size:0.72rem; font-weight:600; color:#64748b; margin:3px 0;">Defensa Civil</div>
         <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#dc2626;">144</div>
       </div>
       <div style="flex:1 1 120px; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:12px; text-align:center;">
-        <div style="font-size:1.4rem;">🚒</div>
+        <div class="dir-ico-svg" style="color:#dc2626;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div>
         <div style="font-family:var(--font-display); font-size:0.72rem; font-weight:600; color:#64748b; margin:3px 0;">Bomberos</div>
         <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#dc2626;">119</div>
       </div>
       <div style="flex:1 1 120px; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:12px; text-align:center;">
-        <div style="font-size:1.4rem;">🚔</div>
+        <div class="dir-ico-svg" style="color:#dc2626;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5.5 3.8 9.6 8 11 4.2-1.4 8-5.5 8-11V5l-8-3z"/></svg></div>
         <div style="font-family:var(--font-display); font-size:0.72rem; font-weight:600; color:#64748b; margin:3px 0;">Policía / Emergencias</div>
         <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#dc2626;">123</div>
       </div>
     </div>
 
     <!-- Bloque 2: Servicios locales San Carlos de Guaroa -->
-    <p class="stagger" style="font-size:0.75rem; font-weight:700; font-family:var(--font-display); color:var(--texto-secondary); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">📍 San Carlos de Guaroa</p>
+    <p class="stagger" style="font-size:0.75rem; font-weight:700; font-family:var(--font-display); color:var(--texto-secondary); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;"><span class="inline-ico" style="color:var(--texto-secondary)"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>San Carlos de Guaroa</p>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-bottom:16px;" class="stagger">
       <div style="background:#fff7ed; border:1px solid #fed7aa; border-left:4px solid #f97316; border-radius:10px; padding:14px;">
-        <div style="font-size:1.2rem; margin-bottom:4px;">🔥</div>
+        <div class="dir-ico-svg" style="color:#f97316; margin-bottom:4px;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
         <div style="font-family:var(--font-display); font-size:0.8rem; font-weight:700; color:#92400e; margin-bottom:2px;">Bomberos Voluntarios Surimena</div>
         <div style="font-family:var(--font-display); font-size:1rem; font-weight:800; color:#f97316;">315 233 7584</div>
         <div style="font-size:0.72rem; color:#92400e;">Alt: 311 337 8159</div>
       </div>
       <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-left:4px solid #16a34a; border-radius:10px; padding:14px;">
-        <div style="font-size:1.2rem; margin-bottom:4px;">🏨</div>
+        <div class="dir-ico-svg" style="color:#16a34a; margin-bottom:4px;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v4"/><path d="M14 14h-4"/><path d="M14 18h-4"/><path d="M14 8h-4"/><path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h2"/><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/></svg></div>
         <div style="font-family:var(--font-display); font-size:0.8rem; font-weight:700; color:#166534; margin-bottom:2px;">Urgencias · E.S.E Hospital Local</div>
         <div style="font-family:var(--font-display); font-size:1rem; font-weight:800; color:#16a34a;">310 310 6518</div>
       </div>
       <div style="background:#eff6ff; border:1px solid #bfdbfe; border-left:4px solid #2563eb; border-radius:10px; padding:14px;">
-        <div style="font-size:1.2rem; margin-bottom:4px;">👮</div>
+        <div class="dir-ico-svg" style="color:#2563eb; margin-bottom:4px;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5.5 3.8 9.6 8 11 4.2-1.4 8-5.5 8-11V5l-8-3z"/></svg></div>
         <div style="font-family:var(--font-display); font-size:0.8rem; font-weight:700; color:#1e40af; margin-bottom:2px;">Policía Nacional SCG</div>
         <div style="font-family:var(--font-display); font-size:1rem; font-weight:800; color:#2563eb;">322 850 9631</div>
         <div style="font-size:0.72rem; color:#1e40af;">Subestación La Palmera: 317 457 4437</div>
       </div>
       <div style="background:#faf5ff; border:1px solid #e9d5ff; border-left:4px solid #7c3aed; border-radius:10px; padding:14px;">
-        <div style="font-size:1.2rem; margin-bottom:4px;">⚙️</div>
+        <div class="dir-ico-svg" style="color:#7c3aed; margin-bottom:4px;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <div style="font-family:var(--font-display); font-size:0.8rem; font-weight:700; color:#5b21b6; margin-bottom:2px;">CMGRD · Enlace GRD</div>
         <div style="font-family:var(--font-display); font-size:1rem; font-weight:800; color:#7c3aed;">312 571 7593</div>
         <div style="font-size:0.72rem; color:#5b21b6;">Secretaría de Gobierno: 320 344 0139</div>
@@ -1715,7 +1832,7 @@
     </div>
 
     <!-- BRIGADA — datos reales del Acta de Conformación -->
-    <h4 class="stagger" style="margin-top: 20px; margin-bottom: 12px; font-size: 1rem;">🦺 Brigada Integral de Emergencias — Generación La Paz</h4>
+    <h4 class="stagger" style="margin-top: 20px; margin-bottom: 12px; font-size: 1rem;"><span class="h4-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg></span>Brigada Integral de Emergencias — Generación La Paz</h4>
     <p class="stagger" style="font-size:0.85rem; color:var(--texto-secondary); margin-bottom:12px;">Conformada el 12 de Marzo de 2026 · Decreto 1443/2014 Art. 25</p>
 
     <div style="overflow-x:auto;" class="stagger">
@@ -1794,7 +1911,7 @@
     </div>
 
     <div class="card stagger" style="border-left-color: var(--azul-medio); margin-top: 4px;">
-      <h4>🤝 Apoyo Externo</h4>
+      <h4><span class="h4-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg></span>Apoyo Externo</h4>
       <p style="font-size:0.85rem; color:var(--texto-secondary); margin:0;">
         <strong>Interno:</strong> ASETCO · Inversora La Paz<br>
         <strong>Externo:</strong> Cuerpo de Bomberos Voluntarios de Surimena (San Carlos de Guaroa)
@@ -1810,7 +1927,7 @@
     <h2><span class="section-number">11</span>Reporte de Accidentes e Incidentes</h2>
 
     <div class="emergency-banner stagger" style="background: var(--azul-medio);">
-      <span class="e-ico">📋</span>
+      <span class="e-ico e-ico-svg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span>
       <div class="e-text">
         <strong>Todo evento debe reportarse — sin importar su magnitud</strong>
         Un casi-accidente de hoy puede ser el accidente grave de mañana. El reporte oportuno protege a todos y activa los apoyos necesarios.
@@ -1818,7 +1935,7 @@
     </div>
 
     <!-- Flujograma visual -->
-    <h4 class="stagger" style="margin-bottom:14px; margin-top:20px;">🔄 Canal de Reporte — Paso a Paso</h4>
+    <h4 class="stagger" style="margin-bottom:14px; margin-top:20px;"><span class="h4-ico ico-naranja"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg></span>Canal de Reporte — Paso a Paso</h4>
 
     <div class="proceso-steps stagger">
       <div class="paso-item">
@@ -1859,10 +1976,10 @@
     </div>
 
     <!-- Contactos HSEQ destacados -->
-    <h4 class="stagger" style="margin-top:20px; margin-bottom:12px;">📲 Contactos Directos HSEQ — Proyecto La Paz</h4>
+    <h4 class="stagger" style="margin-top:20px; margin-bottom:12px;"><span class="h4-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span>Contactos Directos HSEQ — Proyecto La Paz</h4>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;" class="stagger">
       <div style="background: var(--azul-oscuro); border-radius:var(--radio-lg); padding:20px; color:white; text-align:center;">
-        <div style="font-size:2rem; margin-bottom:8px;">👩‍💼</div>
+        <div style="margin-bottom:10px; display:flex; justify-content:center; color:rgba(255,255,255,0.9)"><svg class="lc-icon" style="width:30px;height:30px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <div style="font-family:var(--font-display); font-weight:700; font-size:0.95rem; margin-bottom:4px;">Lisbey Rosas</div>
         <div style="font-size:0.78rem; opacity:0.75; margin-bottom:10px;">Analista HSEQ · Jefa de Brigada</div>
         <a href="tel:3202393340" style="
@@ -1871,10 +1988,10 @@
           padding:8px 18px; border-radius:8px;
           font-family:var(--font-display); font-weight:700; font-size:0.88rem;
           text-decoration:none;
-        ">📞 320 239 3340</a>
+        "><span class="inline-ico" style="color:white"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>320 239 3340</a>
       </div>
       <div style="background: var(--azul-oscuro); border-radius:var(--radio-lg); padding:20px; color:white; text-align:center;">
-        <div style="font-size:2rem; margin-bottom:8px;">👨‍💼</div>
+        <div style="margin-bottom:10px; display:flex; justify-content:center; color:rgba(255,255,255,0.9)"><svg class="lc-icon" style="width:30px;height:30px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <div style="font-family:var(--font-display); font-weight:700; font-size:0.95rem; margin-bottom:4px;">Carlos Esteban</div>
         <div style="font-size:0.78rem; opacity:0.75; margin-bottom:10px;">Director HSEQ · COE</div>
         <a href="tel:3153369342" style="
@@ -1883,14 +2000,14 @@
           padding:8px 18px; border-radius:8px;
           font-family:var(--font-display); font-weight:700; font-size:0.88rem;
           text-decoration:none;
-        ">📞 315 336 9342</a>
+        "><span class="inline-ico" style="color:white"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>315 336 9342</a>
       </div>
     </div>
 
     <!-- Reglas críticas del reporte -->
     <div style="margin-top:16px;" class="stagger">
       <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-left:4px solid #16a34a; border-radius:var(--radio); padding:16px 18px; margin-bottom:10px;">
-        <h4 style="color:#166534; margin-bottom:8px;">✅ Recuerda siempre</h4>
+        <h4 style="color:#166534; margin-bottom:8px;"><span class="block-ico" style="color:#16a34a"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></span>Recuerda siempre</h4>
         <ul style="margin:0; font-size:0.88rem; color:#166534;">
           <li>Reporta <strong>todo evento</strong>: accidente, incidente, casi-accidente o condición insegura.</li>
           <li>El reporte temprano permite una respuesta más efectiva y protege tus derechos.</li>
@@ -1899,7 +2016,7 @@
         </ul>
       </div>
       <div style="background:#fef2f2; border:1px solid #fecaca; border-left:4px solid #dc2626; border-radius:var(--radio); padding:16px 18px;">
-        <h4 style="color:#dc2626; margin-bottom:8px;">❌ No hagas esto</h4>
+        <h4 style="color:#dc2626; margin-bottom:8px;"><span class="block-ico" style="color:#dc2626"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></span>No hagas esto</h4>
         <ul style="margin:0; font-size:0.88rem; color:#991b1b;">
           <li>No ocultes ni minimices el evento por temor a consecuencias.</li>
           <li>No tomes decisiones de traslado médico sin consultar al supervisor y a HSEQ.</li>
@@ -1933,7 +2050,7 @@
         loading="lazy">
     </div>
 
-    <p class="stagger" style="font-weight:600; margin-bottom:10px; margin-top:16px;">📍 Puntos de Encuentro — Extractora La Paz:</p>
+    <p class="stagger" style="font-weight:600; margin-bottom:10px; margin-top:16px;"><span class="inline-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>Puntos de Encuentro — Extractora La Paz:</p>
     <div class="plano-container stagger">
       <img
         src="https://i.postimg.cc/wMrM92M4/2-Puntos-de-Encuentro-Extractora-La-Paz.png"
@@ -1943,7 +2060,7 @@
     </div>
 
     <!-- Foto señal ruta de evacuación real en planta -->
-    <p class="stagger" style="font-weight:600; margin-bottom:10px; margin-top: 20px;">📍 Señalización de Ruta de Evacuación en planta:</p>
+    <p class="stagger" style="font-weight:600; margin-bottom:10px; margin-top: 20px;"><span class="inline-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>Señalización de Ruta de Evacuación en planta:</p>
     <div class="imagen-seccion stagger">
       <!--
         INSTRUCCIÓN: Sube la foto de la señal verde "RUTA DE EVACUACIÓN" junto a los generadores
@@ -1957,13 +2074,13 @@
     </div>
 
     <div class="card stagger" style="border-left-color: var(--verde);">
-      <h4>✅ Recomendaciones Clave</h4>
+      <h4><span class="h4-ico ico-verde"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></span>Recomendaciones Clave</h4>
       <ul style="margin:0;">
         <li>Ubica el punto <em>"Usted está aquí"</em> en los mapas físicos de tu área de trabajo.</li>
         <li>Identifica las rutas seguras alejadas de los tanques de GLP y la subestación.</li>
         <li>No te devuelvas por objetos personales una vez iniciada la evacuación.</li>
         <li>Mantén el orden y sigue las instrucciones de los brigadistas locales.</li>
-        <li>El punto de encuentro está señalizado con la convención <strong>🧑‍🤝‍🧑</strong> en el mapa.</li>
+        <li>El punto de encuentro está señalizado con la convención de <strong>punto de encuentro</strong> en el mapa.</li>
       </ul>
     </div>
   </section>
@@ -1976,12 +2093,12 @@
     <h2><span class="section-number">13</span>Tipos de Extintores</h2>
 
     <div class="alerta-extintor stagger">
-      <span>⚠️</span>
+      <span class="block-ico" style="color:#b45309"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span>
       Solo personal capacitado y entrenado debe manipular los extintores. Conoce su ubicación y tipo según el área (Motores, Subestación, Talleres).
     </div>
 
     <!-- Foto real de extintores en planta -->
-    <p class="stagger" style="font-weight:600; margin-bottom:10px;">📸 Extintores disponibles en la Planta La Paz:</p>
+    <p class="stagger" style="font-weight:600; margin-bottom:10px;"><span class="inline-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>Extintores disponibles en la Planta La Paz:</p>
     <div class="imagen-seccion stagger">
       <!--
         INSTRUCCIÓN: Sube la foto de los 3 extintores (ABC amarillo izq, CO2 rojo centro, ABC amarillo der)
@@ -2006,7 +2123,7 @@
         <img src="https://i.postimg.cc/V6fDcJXh/TIPO-CO2.png" alt="Extintor tipo CO2 de gas carbónico" loading="lazy">
       </div>
       <div class="extintor-card ext-agua stagger">
-        <h4>🟢 AGUA</h4>
+        <h4>🟢 AGUA · Solkaflam</h4>
         <div class="extintor-uso">Combustibles sólidos (madera, papel) e incendios incipientes en oficinas o campamentos.</div>
         <img src="https://i.postimg.cc/28HnJH5n/Extintor-tipo-A.png" alt="Extintor tipo agua Solkaflam" loading="lazy">
       </div>
@@ -2023,7 +2140,7 @@
 
     <div class="grid-2 stagger" style="margin-bottom: 20px;">
       <div class="card" style="border-left-color: var(--naranja);">
-        <h4>📢 ¿Qué reportar?</h4>
+        <h4><span class="h4-ico ico-naranja"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>¿Qué reportar?</h4>
         <ul style="margin:0; font-size:0.88rem;">
           <li>Actos inseguros observados</li>
           <li>Condiciones peligrosas o fugas</li>
@@ -2032,7 +2149,7 @@
         </ul>
       </div>
       <div class="card" style="border-left-color: var(--verde);">
-        <h4>🎯 ¿Por qué es importante?</h4>
+        <h4><span class="h4-ico ico-verde"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>¿Por qué es importante?</h4>
         <ul style="margin:0; font-size:0.88rem;">
           <li>Previene accidentes antes de que ocurran</li>
           <li>Mejora las condiciones operativas</li>
@@ -2043,7 +2160,7 @@
     </div>
 
     <div class="qr-box stagger">
-      <p>📱 Escanea el QR para reportar ahora:</p>
+      <p><span class="inline-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span>Escanea el QR para reportar ahora:</p>
       <img src="https://i.postimg.cc/0Nhp4dDd/Captura-de-pantalla-2025-06-17-093430.png" alt="Código QR para acceder al formulario de Tarjetas de Aporte" loading="lazy">
       <p class="qr-hint">Apunta la cámara de tu celular al código QR</p>
     </div>
@@ -2058,12 +2175,12 @@
     <p class="stagger">Se espera que <strong>todas las personas</strong> en la Planta de Generación La Paz — trabajadores de PBI, contratistas y visitantes — mantengan un comportamiento seguro y respetuoso:</p>
 
     <div class="grid-2">
-      <div class="norma-card stagger"><span class="n-ico">🚭</span><h4>Cero Humo / Vapers</h4><p>Prohibido fumar y usar cigarrillos electrónicos en toda la instalación debido al riesgo intrínseco de combustibles.</p></div>
-      <div class="norma-card stagger"><span class="n-ico">🤝</span><h4>Respeto y Cortesía</h4><p>Sigue siempre las indicaciones de los supervisores locales y personal de operaciones de la planta.</p></div>
-      <div class="norma-card stagger"><span class="n-ico">📸</span><h4>Fotografías Restringidas</h4><p>Se requieren equipos intrínsecamente seguros en áreas de GLP y permiso expreso del cliente para tomar fotos.</p></div>
-      <div class="norma-card stagger"><span class="n-ico">🛑</span><h4>No Manipules Equipos</h4><p>Absolutamente prohibido intervenir tableros, válvulas de combustible o arrancar motores sin autorización.</p></div>
-      <div class="norma-card stagger"><span class="n-ico">📍</span><h4>Zonas Restringidas</h4><p>Respeta el cerramiento de la subestación, zonas de tanques y cuartos técnicos. Acceso solo a áreas autorizadas.</p></div>
-      <div class="norma-card stagger"><span class="n-ico">📵</span><h4>Cero Distracciones</h4><p>No camines leyendo el celular cerca a maquinaria pesada, áreas de izaje o cruces vehiculares.</p></div>
+      <div class="norma-card stagger"><span class="n-ico card-ico-lg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h12v3H2z"/><path d="M18 12h2v3h-2z"/><path d="M16 12h1v3h-1z"/><path d="m2 2 20 20"/><path d="M18 8c0-2-1-3-1-3"/></svg></span><h4>Cero Humo / Vapers</h4><p>Prohibido fumar y usar cigarrillos electrónicos en toda la instalación debido al riesgo intrínseco de combustibles.</p></div>
+      <div class="norma-card stagger"><span class="n-ico card-ico-lg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg></span><h4>Respeto y Cortesía</h4><p>Sigue siempre las indicaciones de los supervisores locales y personal de operaciones de la planta.</p></div>
+      <div class="norma-card stagger"><span class="n-ico card-ico-lg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span><h4>Fotografías Restringidas</h4><p>Se requieren equipos intrínsecamente seguros en áreas de GLP y permiso expreso del cliente para tomar fotos.</p></div>
+      <div class="norma-card stagger"><span class="n-ico card-ico-lg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></span><h4>No Manipules Equipos</h4><p>Absolutamente prohibido intervenir tableros, válvulas de combustible o arrancar motores sin autorización.</p></div>
+      <div class="norma-card stagger"><span class="n-ico card-ico-lg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><h4>Zonas Restringidas</h4><p>Respeta el cerramiento de la subestación, zonas de tanques y cuartos técnicos. Acceso solo a áreas autorizadas.</p></div>
+      <div class="norma-card stagger"><span class="n-ico card-ico-lg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="2" x2="22" y1="2" y2="22"/></svg></span><h4>Cero Distracciones</h4><p>No camines leyendo el celular cerca a maquinaria pesada, áreas de izaje o cruces vehiculares.</p></div>
     </div>
   </section>
 
@@ -2073,18 +2190,18 @@
   <section data-title="Seguridad Vial y Transporte" aria-label="Sección 16: Seguridad Vial">
     <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
     <h2><span class="section-number">16</span>Tránsito Interno y Seguridad Vial</h2>
-    <p class="stagger">🚘 Aplica estas normas de movilidad si ingresas con vehículos, maquinaria o simplemente como peatón:</p>
+    <p class="stagger"><span class="inline-ico"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span>Aplica estas normas de movilidad si ingresas con vehículos, maquinaria o simplemente como peatón:</p>
 
     <div class="vial-grid">
-      <div class="vial-card stagger"><span class="v-ico">📵</span><h4>Sin Distracciones</h4><p>No uses el celular mientras conduces ni caminas por zonas operativas o parqueaderos.</p></div>
-      <div class="vial-card stagger"><span class="v-ico">⏱️</span><h4>Límite de Velocidad</h4><div class="velocidad-badge">10 km/h</div><p>Velocidad máxima estricta dentro del predio de Organización La Paz.</p></div>
-      <div class="vial-card stagger"><span class="v-ico">✅</span><h4>Cinturón Siempre</h4><p>Uso obligatorio para todos los ocupantes del vehículo en cualquier recorrido interno.</p></div>
-      <div class="vial-card stagger"><span class="v-ico">🅿️</span><h4>Parqueo Seguro</h4><p>Estaciona en posición de salida (en reversa) únicamente en las zonas designadas.</p></div>
+      <div class="vial-card stagger"><span class="v-ico card-ico-lg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="2" x2="22" y1="2" y2="22"/></svg></span><h4>Sin Distracciones</h4><p>No uses el celular mientras conduces ni caminas por zonas operativas o parqueaderos.</p></div>
+      <div class="vial-card stagger"><span class="v-ico card-ico-lg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><h4>Límite de Velocidad</h4><div class="velocidad-badge">10 km/h</div><p>Velocidad máxima estricta dentro del predio de Organización La Paz.</p></div>
+      <div class="vial-card stagger"><span class="v-ico card-ico-lg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 8 8 8"/><path d="M16 8 8 16"/></svg></span><h4>Cinturón Siempre</h4><p>Uso obligatorio para todos los ocupantes del vehículo en cualquier recorrido interno.</p></div>
+      <div class="vial-card stagger"><span class="v-ico card-ico-lg"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg></span><h4>Parqueo Seguro</h4><p>Estaciona en posición de salida (en reversa) únicamente en las zonas designadas.</p></div>
     </div>
 
     <div class="card stagger" style="border-left-color: var(--rojo); margin-top: 24px; background: #fef2f2;">
       <h3 style="color: var(--rojo); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 1.5rem;">🚛</span> Vehículos Pesados y Combustibles
+        <span class="inline-ico" style="color:var(--rojo); vertical-align:-5px"><svg class="lc-icon" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span> Vehículos Pesados y Combustibles
       </h3>
       <p style="font-size: 0.9rem; color: var(--texto-secondary); margin-bottom: 0;">Todo conductor de carrotanques o carga pesada debe acatar las instrucciones para maniobras cerca a la planta. Motor apagado durante el descargue de Diésel/GLP según protocolo, portar sistema arrestallamas si aplica, y <strong>permanecer atentos en su área designada</strong>. Ceda el paso a maniobras críticas de operación.</p>
     </div>
@@ -2127,13 +2244,13 @@
 
     <div class="video-grid">
       <div class="video-card stagger">
-        <div class="v-ico">🎥</div>
+        <div class="v-ico card-ico-lg" style="margin-bottom:8px;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg></div>
         <h4>Cultura de Seguridad Industrial</h4>
         <p style="font-size:0.82rem; color: var(--texto-secondary); margin-bottom:8px;">Refuerza los conceptos aprendidos en planta</p>
         <a href="https://youtu.be/faHop1FcGNE" target="_blank" rel="noopener">▶ Ver video →</a>
       </div>
       <div class="video-card stagger">
-        <div class="v-ico">🏢</div>
+        <div class="v-ico card-ico-lg" style="margin-bottom:8px;"><svg class="lc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></div>
         <h4>Quiénes Somos — PBI</h4>
         <p style="font-size:0.82rem; color: var(--texto-secondary); margin-bottom:8px;">Conoce nuestro propósito como generadores de energía</p>
         <a href="https://youtu.be/-gRjlWdwpao" target="_blank" rel="noopener">▶ Ver video →</a>

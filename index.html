@@ -727,7 +727,7 @@
 
 <header role="banner">
   <div class="header-left">
-    <div class="header-badge" id="headerBadge" aria-label="Sección actual">1 / 17</div>
+    <div class="header-badge" id="headerBadge" aria-label="Sección actual">1 / 18</div>
     <div>
       <div class="header-section-name" id="headerSectionName">Bienvenida</div>
     </div>
@@ -1313,66 +1313,64 @@
       <li class="stagger"><strong>Punto de Encuentro:</strong> Preséntate en la zona de conteo señalizada. Nadie vuelve a entrar a las instalaciones hasta que el Jefe de Emergencias declare que es seguro.</li>
     </ol>
 
-    <!-- DIRECTORIO DE EMERGENCIAS — datos reales del PDF -->
-    <h4 class="stagger" style="margin-top: 24px; margin-bottom: 12px; font-size: 1rem;">📞 Directorio de Emergencias — San Carlos de Guaroa</h4>
+    <!-- DIRECTORIO DE EMERGENCIAS reorganizado por prioridad -->
+    <h4 class="stagger" style="margin-top: 24px; margin-bottom: 8px; font-size: 1rem;">📞 Directorio de Emergencias</h4>
 
-    <div class="dir-grid stagger">
-      <div class="dir-card dir-nacional">
-        <span class="d-ico">🏥</span>
-        <h4>Cruz Roja Nacional</h4>
-        <div class="d-num">132</div>
+    <!-- Bloque 1: Líneas nacionales -->
+    <p class="stagger" style="font-size:0.75rem; font-weight:700; font-family:var(--font-display); color:var(--texto-secondary); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">🇨🇴 Líneas Nacionales</p>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;" class="stagger">
+      <div style="flex:1 1 120px; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:12px; text-align:center;">
+        <div style="font-size:1.4rem;">🏥</div>
+        <div style="font-family:var(--font-display); font-size:0.72rem; font-weight:600; color:#64748b; margin:3px 0;">Cruz Roja</div>
+        <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#dc2626;">132</div>
       </div>
-      <div class="dir-card dir-nacional">
-        <span class="d-ico">🛡️</span>
-        <h4>Defensa Civil</h4>
-        <div class="d-num">144</div>
+      <div style="flex:1 1 120px; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:12px; text-align:center;">
+        <div style="font-size:1.4rem;">🛡️</div>
+        <div style="font-family:var(--font-display); font-size:0.72rem; font-weight:600; color:#64748b; margin:3px 0;">Defensa Civil</div>
+        <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#dc2626;">144</div>
       </div>
-      <div class="dir-card dir-nacional">
-        <span class="d-ico">🚒</span>
-        <h4>Bomberos Nacional</h4>
-        <div class="d-num">119</div>
+      <div style="flex:1 1 120px; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:12px; text-align:center;">
+        <div style="font-size:1.4rem;">🚒</div>
+        <div style="font-family:var(--font-display); font-size:0.72rem; font-weight:600; color:#64748b; margin:3px 0;">Bomberos</div>
+        <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#dc2626;">119</div>
       </div>
-      <div class="dir-card dir-nacional">
-        <span class="d-ico">🚔</span>
-        <h4>Emergencia y Policía</h4>
-        <div class="d-num">123</div>
+      <div style="flex:1 1 120px; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:12px; text-align:center;">
+        <div style="font-size:1.4rem;">🚔</div>
+        <div style="font-family:var(--font-display); font-size:0.72rem; font-weight:600; color:#64748b; margin:3px 0;">Policía / Emergencias</div>
+        <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:800; color:#dc2626;">123</div>
       </div>
-      <div class="dir-card dir-policia">
-        <span class="d-ico">👮</span>
-        <h4>Policía SCG (Casco Urbano)</h4>
-        <div class="d-num">322 850 9631</div>
+    </div>
+
+    <!-- Bloque 2: Servicios locales San Carlos de Guaroa -->
+    <p class="stagger" style="font-size:0.75rem; font-weight:700; font-family:var(--font-display); color:var(--texto-secondary); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">📍 San Carlos de Guaroa</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-bottom:16px;" class="stagger">
+      <div style="background:#fff7ed; border:1px solid #fed7aa; border-left:4px solid #f97316; border-radius:10px; padding:14px;">
+        <div style="font-size:1.2rem; margin-bottom:4px;">🔥</div>
+        <div style="font-family:var(--font-display); font-size:0.8rem; font-weight:700; color:#92400e; margin-bottom:2px;">Bomberos Voluntarios Surimena</div>
+        <div style="font-family:var(--font-display); font-size:1rem; font-weight:800; color:#f97316;">315 233 7584</div>
+        <div style="font-size:0.72rem; color:#92400e;">Alt: 311 337 8159</div>
       </div>
-      <div class="dir-card dir-policia">
-        <span class="d-ico">🚓</span>
-        <h4>Subestación La Palmera</h4>
-        <div class="d-num">317 457 4437</div>
+      <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-left:4px solid #16a34a; border-radius:10px; padding:14px;">
+        <div style="font-size:1.2rem; margin-bottom:4px;">🏨</div>
+        <div style="font-family:var(--font-display); font-size:0.8rem; font-weight:700; color:#166534; margin-bottom:2px;">Urgencias · E.S.E Hospital Local</div>
+        <div style="font-family:var(--font-display); font-size:1rem; font-weight:800; color:#16a34a;">310 310 6518</div>
       </div>
-      <div class="dir-card dir-bomberos">
-        <span class="d-ico">🔥</span>
-        <h4>Bomberos Voluntarios Surimena</h4>
-        <div class="d-num">315 233 7584</div>
-        <div class="d-sub">Alt: 311 337 8159</div>
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-left:4px solid #2563eb; border-radius:10px; padding:14px;">
+        <div style="font-size:1.2rem; margin-bottom:4px;">👮</div>
+        <div style="font-family:var(--font-display); font-size:0.8rem; font-weight:700; color:#1e40af; margin-bottom:2px;">Policía Nacional SCG</div>
+        <div style="font-family:var(--font-display); font-size:1rem; font-weight:800; color:#2563eb;">322 850 9631</div>
+        <div style="font-size:0.72rem; color:#1e40af;">Subestación La Palmera: 317 457 4437</div>
       </div>
-      <div class="dir-card dir-hospital">
-        <span class="d-ico">🏨</span>
-        <h4>Urgencias · E.S.E Hospital Local</h4>
-        <div class="d-num">310 310 6518</div>
-      </div>
-      <div class="dir-card dir-gobierno">
-        <span class="d-ico">🏛️</span>
-        <h4>Secretaría de Gobierno</h4>
-        <div class="d-num">320 344 0139</div>
-      </div>
-      <div class="dir-card dir-grd">
-        <span class="d-ico">⚙️</span>
-        <h4>Enlace GRD (CMGRD)</h4>
-        <div class="d-num">312 571 7593</div>
-        <div class="d-sub">CPS 097-2026</div>
+      <div style="background:#faf5ff; border:1px solid #e9d5ff; border-left:4px solid #7c3aed; border-radius:10px; padding:14px;">
+        <div style="font-size:1.2rem; margin-bottom:4px;">⚙️</div>
+        <div style="font-family:var(--font-display); font-size:0.8rem; font-weight:700; color:#5b21b6; margin-bottom:2px;">CMGRD · Enlace GRD</div>
+        <div style="font-family:var(--font-display); font-size:1rem; font-weight:800; color:#7c3aed;">312 571 7593</div>
+        <div style="font-size:0.72rem; color:#5b21b6;">Secretaría de Gobierno: 320 344 0139</div>
       </div>
     </div>
 
     <!-- BRIGADA — datos reales del Acta de Conformación -->
-    <h4 class="stagger" style="margin-top: 24px; margin-bottom: 12px; font-size: 1rem;">🦺 Brigada Integral de Emergencias — Generación La Paz</h4>
+    <h4 class="stagger" style="margin-top: 20px; margin-bottom: 12px; font-size: 1rem;">🦺 Brigada Integral de Emergencias — Generación La Paz</h4>
     <p class="stagger" style="font-size:0.85rem; color:var(--texto-secondary); margin-bottom:12px;">Conformada el 12 de Marzo de 2026 · Decreto 1443/2014 Art. 25</p>
 
     <div style="overflow-x:auto;" class="stagger">
@@ -1460,11 +1458,119 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
+       SECCIÓN 11 — REPORTE DE ACCIDENTES E INCIDENTES
+  ═══════════════════════════════════════════════════════ -->
+  <section data-title="Reporte de Accidentes" aria-label="Sección 11: Reporte de Accidentes e Incidentes">
+    <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
+    <h2><span class="section-number">11</span>Reporte de Accidentes e Incidentes</h2>
+
+    <div class="emergency-banner stagger" style="background: linear-gradient(135deg, #7c3aed, #4f46e5);">
+      <span class="e-ico">📋</span>
+      <div class="e-text">
+        <strong>Todo evento debe reportarse — sin importar su magnitud</strong>
+        Un casi-accidente de hoy puede ser el accidente grave de mañana. El reporte oportuno protege a todos y activa los apoyos necesarios.
+      </div>
+    </div>
+
+    <!-- Flujograma visual -->
+    <h4 class="stagger" style="margin-bottom:14px; margin-top:20px;">🔄 Canal de Reporte — Paso a Paso</h4>
+
+    <div class="proceso-steps stagger">
+      <div class="paso-item">
+        <div class="paso-num" style="background:#dc2626; width:40px; height:40px; font-size:1rem;">1</div>
+        <div class="paso-body">
+          <strong>Asegura la zona y atiende al lesionado</strong>
+          <span>Si hay persona lesionada, activa al brigadista de Primeros Auxilios. No muevas al lesionado salvo peligro inmediato. Llama a emergencias si la situación lo requiere.</span>
+        </div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num" style="background:#ea580c; width:40px; height:40px; font-size:1rem;">2</div>
+        <div class="paso-body">
+          <strong>Notifica de inmediato a tu Supervisor directo</strong>
+          <span>Tu primera llamada es siempre al supervisor inmediato o líder de cuadrilla. No actúes solo — informa antes de tomar decisiones sobre traslados.</span>
+        </div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num" style="background:#7c3aed; width:40px; height:40px; font-size:1rem;">3</div>
+        <div class="paso-body">
+          <strong>El Supervisor notifica al equipo HSEQ — inmediatamente</strong>
+          <span>El reporte al equipo HSEQ debe hacerse en los primeros <strong>30 minutos</strong> desde el evento, sin excepción. Ellos coordinan la respuesta y la cadena de reportes.</span>
+        </div>
+      </div>
+      <div class="paso-item">
+        <div class="paso-num" style="background:#1a5096; width:40px; height:40px; font-size:1rem;">4</div>
+        <div class="paso-body">
+          <strong>HSEQ gestiona el proceso de investigación</strong>
+          <span>El equipo HSEQ abre el reporte formal, coordina atención médica si aplica, asegura la escena y lidera la investigación del incidente o accidente.</span>
+        </div>
+      </div>
+      <div class="paso-item" style="padding-bottom:0;">
+        <div class="paso-num" style="background:#16a34a; width:40px; height:40px; font-size:1rem;">5</div>
+        <div class="paso-body">
+          <strong>Preserva la escena y apoya la investigación</strong>
+          <span>No alteres el lugar del evento hasta que HSEQ lo autorice. Sé veraz y coopera con el proceso — el objetivo es prevenir, no sancionar.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contactos HSEQ destacados -->
+    <h4 class="stagger" style="margin-top:20px; margin-bottom:12px;">📲 Contactos Directos HSEQ — Proyecto La Paz</h4>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;" class="stagger">
+      <div style="background: linear-gradient(135deg, #0a1e3d, #1a5096); border-radius:var(--radio-lg); padding:20px; color:white; text-align:center;">
+        <div style="font-size:2rem; margin-bottom:8px;">👩‍💼</div>
+        <div style="font-family:var(--font-display); font-weight:700; font-size:0.95rem; margin-bottom:4px;">Lisbey Rosas</div>
+        <div style="font-size:0.78rem; opacity:0.75; margin-bottom:10px;">Analista HSEQ · Jefa de Brigada</div>
+        <a href="tel:3202393340" style="
+          display:inline-flex; align-items:center; gap:6px;
+          background:var(--naranja); color:white; border:none;
+          padding:8px 18px; border-radius:8px;
+          font-family:var(--font-display); font-weight:700; font-size:0.88rem;
+          text-decoration:none;
+        ">📞 320 239 3340</a>
+      </div>
+      <div style="background: linear-gradient(135deg, #0a1e3d, #1a5096); border-radius:var(--radio-lg); padding:20px; color:white; text-align:center;">
+        <div style="font-size:2rem; margin-bottom:8px;">👨‍💼</div>
+        <div style="font-family:var(--font-display); font-weight:700; font-size:0.95rem; margin-bottom:4px;">Carlos Esteban</div>
+        <div style="font-size:0.78rem; opacity:0.75; margin-bottom:10px;">Director HSEQ · COE</div>
+        <a href="tel:3153369342" style="
+          display:inline-flex; align-items:center; gap:6px;
+          background:var(--naranja); color:white; border:none;
+          padding:8px 18px; border-radius:8px;
+          font-family:var(--font-display); font-weight:700; font-size:0.88rem;
+          text-decoration:none;
+        ">📞 315 336 9342</a>
+      </div>
+    </div>
+
+    <!-- Reglas críticas del reporte -->
+    <div style="margin-top:16px;" class="stagger">
+      <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-left:4px solid #16a34a; border-radius:var(--radio); padding:16px 18px; margin-bottom:10px;">
+        <h4 style="color:#166534; margin-bottom:8px;">✅ Recuerda siempre</h4>
+        <ul style="margin:0; font-size:0.88rem; color:#166534;">
+          <li>Reporta <strong>todo evento</strong>: accidente, incidente, casi-accidente o condición insegura.</li>
+          <li>El reporte temprano permite una respuesta más efectiva y protege tus derechos.</li>
+          <li>El equipo HSEQ es tu canal oficial — ellos gestionan los pasos que siguen.</li>
+          <li>La investigación busca causas, no culpables.</li>
+        </ul>
+      </div>
+      <div style="background:#fef2f2; border:1px solid #fecaca; border-left:4px solid #dc2626; border-radius:var(--radio); padding:16px 18px;">
+        <h4 style="color:#dc2626; margin-bottom:8px;">❌ No hagas esto</h4>
+        <ul style="margin:0; font-size:0.88rem; color:#991b1b;">
+          <li>No ocultes ni minimices el evento por temor a consecuencias.</li>
+          <li>No tomes decisiones de traslado médico sin consultar al supervisor y a HSEQ.</li>
+          <li>No alteres ni limpies la escena antes de que HSEQ lo autorice.</li>
+          <li>No contactes directamente a entidades externas sin coordinación previa con HSEQ.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
        SECCIÓN 11 — PLANO DE EVACUACIÓN
   ═══════════════════════════════════════════════════════ -->
-  <section data-title="Plano de Evacuación" aria-label="Sección 11: Plano de Evacuación">
+  <section data-title="Plano de Evacuación" aria-label="Sección 12: Plano de Evacuación">
     <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
-    <h2><span class="section-number">11</span>Plano de Evacuación y Mapa de Riesgos</h2>
+    <h2><span class="section-number">12</span>Plano de Evacuación y Mapa de Riesgos</h2>
     <p class="stagger">Identifica las salidas de emergencia y el punto de encuentro antes de iniciar cualquier actividad en la Planta Generación La Paz.</p>
 
     <!-- PLANO REAL — imagen del PDF -->
@@ -1520,9 +1626,9 @@
   <!-- ═══════════════════════════════════════════════════════
        SECCIÓN 12 — EXTINTORES
   ═══════════════════════════════════════════════════════ -->
-  <section data-title="Tipos de Extintores" aria-label="Sección 12: Tipos de Extintores">
+  <section data-title="Tipos de Extintores" aria-label="Sección 13: Tipos de Extintores">
     <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
-    <h2><span class="section-number">12</span>Tipos de Extintores</h2>
+    <h2><span class="section-number">13</span>Tipos de Extintores</h2>
 
     <div class="alerta-extintor stagger">
       <span>⚠️</span>
@@ -1565,9 +1671,9 @@
   <!-- ═══════════════════════════════════════════════════════
        SECCIÓN 13 — TARJETAS DE APORTE
   ═══════════════════════════════════════════════════════ -->
-  <section data-title="Tarjetas de Aporte" aria-label="Sección 13: Tarjetas de Aporte">
+  <section data-title="Tarjetas de Aporte" aria-label="Sección 14: Tarjetas de Aporte">
     <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
-    <h2><span class="section-number">13</span>Tarjetas de Aporte</h2>
+    <h2><span class="section-number">14</span>Tarjetas de Aporte</h2>
     <p class="stagger">Son el medio oficial para <strong>reportar actos inseguros, condiciones peligrosas o incidentes ambientales</strong>. Todos — trabajadores directos, contratistas y visitantes — pueden y deben reportar. Tu reporte ayuda a prevenir accidentes.</p>
 
     <div class="grid-2 stagger" style="margin-bottom: 20px;">
@@ -1601,9 +1707,9 @@
   <!-- ═══════════════════════════════════════════════════════
        SECCIÓN 14 — NORMAS DE COMPORTAMIENTO
   ═══════════════════════════════════════════════════════ -->
-  <section data-title="Normas de Comportamiento" aria-label="Sección 14: Normas de Comportamiento">
+  <section data-title="Normas de Comportamiento" aria-label="Sección 15: Normas de Comportamiento">
     <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
-    <h2><span class="section-number">14</span>Normas de Comportamiento</h2>
+    <h2><span class="section-number">15</span>Normas de Comportamiento</h2>
     <p class="stagger">Se espera que <strong>todas las personas</strong> en la Planta de Generación La Paz — trabajadores de PBI, contratistas y visitantes — mantengan un comportamiento seguro y respetuoso:</p>
 
     <div class="grid-2">
@@ -1619,9 +1725,9 @@
   <!-- ═══════════════════════════════════════════════════════
        SECCIÓN 15 — SEGURIDAD VIAL
   ═══════════════════════════════════════════════════════ -->
-  <section data-title="Seguridad Vial y Transporte" aria-label="Sección 15: Seguridad Vial">
+  <section data-title="Seguridad Vial y Transporte" aria-label="Sección 16: Seguridad Vial">
     <div class="mascota"><img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="" loading="lazy"></div>
-    <h2><span class="section-number">15</span>Tránsito Interno y Seguridad Vial</h2>
+    <h2><span class="section-number">16</span>Tránsito Interno y Seguridad Vial</h2>
     <p class="stagger">🚘 Aplica estas normas de movilidad si ingresas con vehículos, maquinaria o simplemente como peatón:</p>
 
     <div class="vial-grid">
@@ -1642,9 +1748,9 @@
   <!-- ═══════════════════════════════════════════════════════
        SECCIÓN 16 — CHECKLIST REQUISITOS DE INGRESO
   ═══════════════════════════════════════════════════════ -->
-  <section id="checklist-section" data-title="Requisitos de Ingreso" aria-label="Sección 16: Requisitos de Ingreso">
+  <section id="checklist-section" data-title="Requisitos de Ingreso" aria-label="Sección 17: Requisitos de Ingreso">
     <div class="mascota"><img src="https://i.postimg.cc/gcX7rNgd/Logo-PBI.png" alt="" loading="lazy"></div>
-    <h2><span class="section-number">16</span>Requisitos de Ingreso</h2>
+    <h2><span class="section-number">17</span>Requisitos de Ingreso</h2>
     <p class="stagger">Antes de ingresar a la planta, confirma tu compromiso con estas normativas críticas. Aplica para todos sin excepción: trabajadores PBI, contratistas y visitantes. <strong>Debes marcar todos los ítems para continuar.</strong></p>
 
     <div class="checklist-count stagger" id="checkCount">0 de 6 completados</div>
@@ -1667,7 +1773,7 @@
   <!-- ═══════════════════════════════════════════════════════
        SECCIÓN 17 — CIERRE Y CULTURA
   ═══════════════════════════════════════════════════════ -->
-  <section data-title="Cierre y Cultura" aria-label="Sección 17: Cierre y Cultura">
+  <section data-title="Cierre y Cultura" aria-label="Sección 18: Cierre y Cultura">
     <div class="cierre-hero">
       <span class="cierre-trophy">🏆</span>
       <h2 style="color: var(--azul-oscuro);">¡Inducción Completada!</h2>
